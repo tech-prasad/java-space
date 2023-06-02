@@ -1,0 +1,245 @@
+
+Programing languages:
+Java
+C
+C++
+C#
+SQL
+Java-script
+
+Java Programing Language:
+
+What is Java?
+
+Java is a High Level Programing Language
+
+	High Level: Simple english like statements [object1.addAndPrint()]
+
+	Simple english like statements -> OS -> Processor
+	Simple english like statements -> OS System routines -> Commands -> ZEROs and ONEs
+
+Java is a Object Oriented Programing Language (OOP)
+
+	Object Oriented Programing Language has 4 Principles
+	1. Encapsulation
+	2. Inheritance
+	3. Abstraction
+	4. Polymorphism
+	
+What we can develop using Java?
+	Standalone Applications, Web Applications, Enterprise Applications
+
+Which company developed Java?
+	Sun MicroSystem -> Oracle
+
+Define Java?
+	Java is a High level, Object oriented programming language and used to develop Standalone, Web and Enterprise Applications. It was developed by Sun MicroSystem and Now Owned by Oracle.
+
+
+
+Explain Object oriented Programing Language Principles?
+
+1. Encapsulation - is the process of binding Data and Functionality together in Single Entity.
+	By using class and object we achieve Encapsulation.
+	
+	Class -> Object 1, Object 2
+
+	Logical - 
+	Class { 
+		data - data variable
+		functionality: data + 2 - method
+	}
+
+	Physical - 
+	Object 1 {
+		data = 3
+		functionality: 3+2=5
+	}
+	
+	Object 2 {
+		functionality: 0+2=2 <Note: data is 0 by default if we don't assign value>
+	}
+
+CODE EXAMPLE:
+public class NumberProcessor {
+
+	// Special method called Constructor
+	public NumberProcessor(){
+		// initialize the data members
+		data = 44;
+	}
+		
+	public int data;
+	
+	public void addAndPrint(){
+		
+		int addedValue = data + 2;
+		
+		System.out.println(addedValue);
+	}
+	
+	
+	public static void main(String[] array){
+		
+		NumberProcessor object1 = new NumberProcessor();
+	
+		object1.data = 3;
+				
+		object1.addAndPrint();
+		
+		NumberProcessor object2 = new NumberProcessor();
+		
+		object2.addAndPrint();
+		
+		NumberProcessor object3 = new NumberProcessor();
+		
+		object3.data = 78;
+		
+		object3.addAndPrint();
+		
+	}
+	
+}
+
+Define Class?
+Class is a logical structure which has set of Data members and Functionality.
+Class is a logical structure which has set of Data members, Methods and Constructors.
+
+Define Variable?
+Variable is a name/reference to the memory location and holds the link to that memory location.
+
+Define Method?
+Method is a set of instructions to serve the Functionality.
+
+Define Constructor?
+Constructor is special method used initialize the data members.
+Constructor will have the same name Class name.
+
+Define Object?
+Object is physical entity of the Class.
+When we create Object, memory will be allocated to Data members of the class and Constructor will called and initialize the data members
+
+
+2. Inheritance
+It is a process of acquiring the properties of Parent/Super class into Child/Sub class
+It is a process of acquiring the Data and Functionality of Parent/Super class into Child/Sub class
+It is a process of extending the properties of Parent/Super class into Child/Sub class
+
+Inheritance is called "IS A" Relationship
+
+Parent/Super/Base
+Child/Sub/Derived
+
+we need at least two classes:
+Parent
+Child
+
+class Parent {
+
+	public Parent(){
+		vehicle = "Car";
+	}
+	
+	String vehicle = "Car";
+	
+	public void drive(){
+		System.out.println("Parent: "+vehicle);
+	}
+}
+
+class Child extends Parent{
+		
+	public static void main(String[] array){
+	
+		Child object = new Child();
+		
+		object.drive();
+	
+	}
+}
+
+1. Single
+2. Multi-Level
+3. Hierarichal
+
+1. Single Inheritance
+It is the of one Child extending the properties of One Parent.
+
+Parent -> Child
+
+class Anil {
+	
+	String car;
+	
+	public Anil(){
+		car = "Kia";
+	
+		System.out.println("Anil Constructor Called");
+	}
+	
+	public void driveCar(){
+		System.out.println("Driving car:"+car);
+	}
+}
+
+class Bharat extends Anil {
+	
+	String bike;
+	
+	public void driveBike(){
+		System.out.println("Driving bike:"+bike);
+	}
+}
+
+public class Test {
+	
+	public static void main(String[] arr){
+		
+		Bharat b = new Bharat();
+		
+		b.bike = "Pulser";
+		
+		b.driveBike();
+		
+		b.driveCar();
+	}
+}
+
+2. Multi-Level
+It is the Process of having Parent-Child Chain Relationship
+
+Parent -> Child -> Child -> Child -> ...
+
+class Anil {
+	
+	public Anil(){
+		car = "Kia";
+	
+		System.out.println("Anil Constructor Called");
+	}
+	
+	String car;
+		
+	public void driveCar(){
+		System.out.println("Driving car:"+car);
+	}
+}
+
+class Bharat extends Anil {
+	
+	String bike;
+	
+	public void driveBike(){
+		System.out.println("Driving bike:"+bike);
+	}
+}
+
+class Chandu extends Bharat {
+
+	String phone;
+	
+	public void usePhone(){
+		System.out.println("Use phone:" +phone);
+	}
+	
+}
