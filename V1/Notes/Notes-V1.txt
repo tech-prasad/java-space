@@ -1,3 +1,58 @@
+Java:
+-----
+
+30-MAY-2023
+-----------
+
+Processor is Hardware which understands only Binary numbers (0,1)
+
+User instruction -> Calculator -> OS -> Processor
+User instruction -> calculator -> OS System Routines -> Commands -> ZEROs and ONEs
+
+Processor - 
+Low level or Machine language - ZEROs and ONEs
+Middle level or Assembly language - Commands
+	Commands: add 2 2 , sub 2 2
+
+OS -
+System routines
+
+Binary:
+0 1 -> 0 1 2 3 4
+
+0 - 0 0
+1 - 0 1
+2 - 1 0
+3 - 1 1
+4 - 1 0 0
+8 - 1 0 0 0
+
+2 power 0
+2 power 1
+2 power 2
+
+Octal:
+8 power 0
+8 power 1
+8 power 2
+
+Decimal:
+10 power 0
+10 power 1
+10 power 2
+
+HexaDecimal:
+16 power 0
+16 power 1
+16 power 2
+
+0 15
+0 .. 9 a b .. f
+
+
+
+31-MAY-2023
+-----------
 
 Programing languages:
 Java
@@ -38,6 +93,12 @@ Define Java?
 
 
 Explain Object oriented Programing Language Principles?
+
+Object Oriented Programing Language has 4 Principles
+	1. Encapsulation
+	2. Inheritance
+	3. Abstraction
+	4. Polymorphism
 
 1. Encapsulation - is the process of binding Data and Functionality together in Single Entity.
 	By using class and object we achieve Encapsulation.
@@ -101,6 +162,9 @@ public class NumberProcessor {
 	
 }
 
+01-JUNE-2023
+------------
+
 Define Class?
 Class is a logical structure which has set of Data members and Functionality.
 Class is a logical structure which has set of Data members, Methods and Constructors.
@@ -119,11 +183,13 @@ Define Object?
 Object is physical entity of the Class.
 When we create Object, memory will be allocated to Data members of the class and Constructor will called and initialize the data members
 
+02-JUNE-2023
+------------
 
 2. Inheritance
 It is a process of acquiring the properties of Parent/Super class into Child/Sub class
 It is a process of acquiring the Data and Functionality of Parent/Super class into Child/Sub class
-It is a process of extending the properties of Parent/Super class into Child/Sub class
+It is a process of extending the properties of Parent class into Child class
 
 Inheritance is called "IS A" Relationship
 
@@ -160,7 +226,7 @@ class Child extends Parent{
 
 1. Single
 2. Multi-Level
-3. Hierarichal
+3. Hierarchical
 
 1. Single Inheritance
 It is the of one Child extending the properties of One Parent.
@@ -181,6 +247,7 @@ class Anil {
 		System.out.println("Driving car:"+car);
 	}
 }
+
 
 class Bharat extends Anil {
 	
@@ -204,6 +271,7 @@ public class Test {
 		b.driveCar();
 	}
 }
+
 
 2. Multi-Level
 It is the Process of having Parent-Child Chain Relationship
@@ -236,6 +304,11 @@ class Bharat extends Anil {
 
 class Chandu extends Bharat {
 
+	public Chandu() {
+		super();
+		phone = "Apple";
+	}
+
 	String phone;
 	
 	public void usePhone(){
@@ -243,3 +316,28 @@ class Chandu extends Bharat {
 	}
 	
 }
+
+public class MLTest{
+	
+	public static void main(String[] array){
+		
+		Chandu c = new Chandu();
+		
+		c.phone = "MI";
+		
+		c.usePhone();
+		
+		c.driveBike();
+		
+		c.driveCar();
+	}
+	
+}
+
+Anil Constructor Called
+Use phone:MI
+Driving bike:null
+Driving car:Kia
+
+05-JUNE-2023
+------------
