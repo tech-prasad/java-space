@@ -229,7 +229,7 @@ class Child extends Parent{
 3. Hierarchical
 
 1. Single Inheritance
-It is the of one Child extending the properties of One Parent.
+It is the process of one Child extending the properties of One Parent.
 
 Parent -> Child
 
@@ -248,11 +248,10 @@ class Anil {
 	}
 }
 
-
 class Bharat extends Anil {
 	
 	String bike;
-	
+		
 	public void driveBike(){
 		System.out.println("Driving bike:"+bike);
 	}
@@ -262,19 +261,15 @@ public class Test {
 	
 	public static void main(String[] arr){
 		
-		Bharat b = new Bharat();
+		Anil a = new Bharat();
 		
-		b.bike = "Pulser";
-		
-		b.driveBike();
-		
-		b.driveCar();
+		a.driveCar();
 	}
 }
 
 
 2. Multi-Level
-It is the Process of having Parent-Child Chain Relationship
+It is the Process of having Single Parent-Child Chain Relationship
 
 Parent -> Child -> Child -> Child -> ...
 
@@ -314,7 +309,6 @@ class Chandu extends Bharat {
 	public void usePhone(){
 		System.out.println("Use phone:" +phone);
 	}
-	
 }
 
 public class MLTest{
@@ -331,7 +325,6 @@ public class MLTest{
 		
 		c.driveCar();
 	}
-	
 }
 
 Anil Constructor Called
@@ -341,3 +334,97 @@ Driving car:Kia
 
 05-JUNE-2023
 ------------
+3. Hierarchical Inheritance
+It is the process of Single Parent and Multiple Child Chain Relationship.
+
+Parent -> Child-1 and Child-2
+
+Child-1 -> Child-11 and Child-12
+
+class Anil {
+	
+	public Anil(){
+		car = "Kia";
+	
+		System.out.println("Anil Constructor Called");
+	}
+	
+	String car;
+	
+	public void driveCar(){
+		System.out.println("Driving car:"+car);
+	}
+}
+
+class Bharat extends Anil {
+	
+	String bike;
+	
+	public void driveBike(){
+		System.out.println("Driving bike:"+bike);
+	}
+}
+
+class John extends Anil {
+		
+	String computer = "DELL";
+
+	public void workOnComputer(){
+		System.out.println("Working on Computer: "+ computer);
+	}
+}
+
+public class HirarchicalInheritance {
+	
+	public static void main(String[] a) {
+		
+		Bharat b = new Bharat();
+		
+		b.driveCar();
+		
+		b.bike = "Pulser";
+		
+		b.driveBike();
+		
+		John j = new John();
+		
+		j.car = "Maruthi";
+		
+		j.driveCar();
+		
+		j.workOnComputer();
+		
+		b.driveCar();
+	}
+}
+
+Interface:
+----------
+
+Interface is a contract to the class.
+
+Logical structure -> Real entity
+Class -> Object
+
+public void driveCar();
+
+public interface Car {
+
+	public void driveCar();
+}
+
+public class KiaCar implements Car {
+
+	public void driveCar(){
+		System.out.println("Driving Kia Car");
+	}
+}
+
+Car c = new KiaCar();
+
+c.driveCar();
+
+Driving Kia Car
+
+
+
