@@ -50,7 +50,6 @@ HexaDecimal:
 0 .. 9 a b .. f
 
 
-
 31-MAY-2023
 -----------
 
@@ -89,7 +88,6 @@ Which company developed Java?
 
 Define Java?
 	Java is a High level, Object oriented programming language and used to develop Standalone, Web and Enterprise Applications. It was developed by Sun MicroSystem and Now Owned by Oracle.
-
 
 
 Explain Object oriented Programing Language Principles?
@@ -156,10 +154,8 @@ public class NumberProcessor {
 		
 		object3.data = 78;
 		
-		object3.addAndPrint();
-		
+		object3.addAndPrint();	
 	}
-	
 }
 
 01-JUNE-2023
@@ -227,6 +223,7 @@ class Child extends Parent{
 1. Single
 2. Multi-Level
 3. Hierarchical
+4. Multiple
 
 1. Single Inheritance
 It is the process of one Child extending the properties of One Parent.
@@ -335,6 +332,7 @@ Driving car:Kia
 05-JUNE-2023
 ------------
 3. Hierarchical Inheritance
+
 It is the process of Single Parent and Multiple Child Chain Relationship.
 
 Parent -> Child-1 and Child-2
@@ -398,33 +396,90 @@ public class HirarchicalInheritance {
 	}
 }
 
+Output:
+Anil Constructor Called
+Driving car:Kia
+Driving bike:Pulser
+Anil Constructor Called
+Driving car:Maruthi
+Working on Computer: DELL
+Driving car:Kia
+
 Interface:
 ----------
-
 Interface is a contract to the class.
+
+Abstract method is a method which does not have Functionality.
+
+Interface is a contract to the class and it has set of Constants and Abstract methods.
+Interface does not have Data members and Constructors.
 
 Logical structure -> Real entity
 Class -> Object
 
-public void driveCar();
+interface Car {
+	
+	int CONSTANT=1;
 
-public interface Car {
-
-	public void driveCar();
+	void driveCar();
+	void driveCarWith6Gears();
 }
 
-public class KiaCar implements Car {
+abstract class KiaCar implements Car {
 
 	public void driveCar(){
 		System.out.println("Driving Kia Car");
 	}
 }
 
-Car c = new KiaCar();
+class KiaXCar extends KiaCar {
 
-c.driveCar();
+	public void driveCarWith6Gears(){
+		System.out.println("Driving Kia Car with 60KMPH");
+	}
+}
+
+class KiaYCar extends KiaCar {
+
+	public void driveCarWith6Gears(){
+		System.out.println("Driving Kia Car with 100KMPH");
+	}
+}
+
+public class InterfaceExample {
+
+	public static void main(String[] a){
+		
+		Car c = new KiaXCar();
+		
+		c.driveCar();
+		
+		c.driveCarWith6Gears();
+		
+		Car cy = new KiaYCar();
+		
+		cy.driveCar();
+		
+		cy.driveCarWith6Gears();
+	}
+}
 
 Driving Kia Car
+Driving Kia Car with 60KMPH
+Driving Kia Car
+Driving Kia Car with 100KMPH
 
 
+06-JUNE-2023
+------------
+4. Multiple Inheritance
+
+It is the process of a single Child Having Two Parents
+
+Child -> Parent 1 and Parent 2
+
+By default Java does not support Multiple Inheritance with Classes.
+
+
+We can achieve Multiple Inheritance in Java using Interfaces
 
