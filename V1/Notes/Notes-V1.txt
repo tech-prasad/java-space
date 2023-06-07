@@ -224,6 +224,7 @@ class Child extends Parent{
 2. Multi-Level
 3. Hierarchical
 4. Multiple
+5. Hybrid
 
 1. Single Inheritance
 It is the process of one Child extending the properties of One Parent.
@@ -414,6 +415,8 @@ Abstract method is a method which does not have Functionality.
 Interface is a contract to the class and it has set of Constants and Abstract methods.
 Interface does not have Data members and Constructors.
 
+Interface can be extends from another Interface.
+
 Logical structure -> Real entity
 Class -> Object
 
@@ -469,17 +472,86 @@ Driving Kia Car with 60KMPH
 Driving Kia Car
 Driving Kia Car with 100KMPH
 
+interface Horn {
+	void soundHorn();
+}
+
+interface Car extends Horn {
+	public abstract void driveCar();	
+}
+
 
 06-JUNE-2023
 ------------
 4. Multiple Inheritance
 
-It is the process of a single Child Having Two Parents
+It is the process of Single Child Having Multiple Parents
 
 Child -> Parent 1 and Parent 2
 
 By default Java does not support Multiple Inheritance with Classes.
 
-
 We can achieve Multiple Inheritance in Java using Interfaces
+
+07-JUNE-2023
+------------
+interface Car {
+	public abstract void driveCar();	
+}
+class Horn {
+	void soundHorn(){
+		System.out.println("Horn sound");
+	}
+}
+class KiaCar extends Horn implements Car {
+	public void driveCar(){
+		System.out.println("Driving Kia Car");
+	}
+}
+public class MultipleInheritance {
+	public static void main(String[] arr){
+		KiaCar c = new KiaCar();
+		
+		c.soundHorn();
+		c.driveCar();					
+	}	
+}
+
+5. Hybrid Inheritance
+---------------------
+Hybrid Inheritance is a combination of Hierarchical Inheritance and Multiple Inheritance
+
+Parent 1 -> Child 1, Child 2 --> Hierarchical Inheritance
+Child 1, Child 2 -> Child 3 --> Multiple Inheritance
+
+Anil -> Bharat , Chandu --> Hierarchical Inheritance
+Bharat, Chandu -> Dharma --> Multiple Inheritance
+
+Results in Hybrid Inheritance
+
+interface Car {
+	public abstract void driveCar();	
+}
+interface Horn extends Car {
+	void soundHorn();
+}
+class KiaCar implements Car {
+	public void driveCar(){
+		System.out.println("driveCar called");
+	}
+}
+class KiaXCar extends KiaCar implements Horn {
+	public void soundHorn(){
+		System.out.println("soundHorn called");
+	}
+}
+public class HybridInheritance {
+	public static void main(String[] arr){
+		KiaXCar c = new KiaXCar();
+		c.soundHorn();
+		c.driveCar();			
+	}	
+}
+
+
 
