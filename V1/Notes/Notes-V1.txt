@@ -89,7 +89,6 @@ Which company developed Java?
 Define Java?
 	Java is a High level, Object oriented programming language and used to develop Standalone, Web and Enterprise Applications. It was developed by Sun MicroSystem and Now Owned by Oracle.
 
-
 Explain Object oriented Programing Language Principles?
 
 Object Oriented Programing Language has 4 Principles
@@ -136,7 +135,6 @@ public class NumberProcessor {
 		
 		System.out.println(addedValue);
 	}
-	
 	
 	public static void main(String[] array){
 		
@@ -216,7 +214,6 @@ class Child extends Parent{
 		Child object = new Child();
 		
 		object.drive();
-	
 	}
 }
 
@@ -480,7 +477,6 @@ interface Car extends Horn {
 	public abstract void driveCar();	
 }
 
-
 06-JUNE-2023
 ------------
 4. Multiple Inheritance
@@ -530,7 +526,7 @@ Bharat, Chandu -> Dharma --> Multiple Inheritance
 Results in Hybrid Inheritance
 
 interface Car {
-	public abstract void driveCar();	
+	public abstract void driveCar();
 }
 interface Horn extends Car {
 	void soundHorn();
@@ -552,6 +548,80 @@ public class HybridInheritance {
 		c.driveCar();			
 	}	
 }
+
+08-JUNE-2023
+------------
+// NumberProcessor is class name
+public class NumberProcessor {
+
+	// Special method called Constructor
+	// NumberProcessor() is a Constructor
+	public NumberProcessor(){
+		// initialize the data members
+		data = 44;
+	}
+	// data is instance variable	
+	public int data;
+	
+	// addAndPrint() is a instance method definition
+	// addAndPrint() is concrete method
+	public void addAndPrint(){
+		// addedValue is local variable
+		int addedValue = data + 2;
+		
+		System.out.println(addedValue);
+	}
+	
+	public static void main(String[] array){
+		
+		// new NumberProcessor() is a object or instance
+		// object1 is a reference variable of type NumberProcessor and holding the object/instance // of NumberProcessor class
+		NumberProcessor object1 = new NumberProcessor();
+	
+		// object1.data is assigning data instance variable using object1 reference variable
+		object1.data = 3;
+		
+		// object1.addAndPrint(); is calling instance method using object1 reference variable
+		object1.addAndPrint();
+	}
+}
+
+3. Abstraction
+--------------
+Abstraction is process hiding unnecessary details and represent required details.
+
+To achieve Abstraction we have to use Interfaces and Abstract classes
+
+Interface: 
+Interface is a contract to the class and it has set of Constants and Abstract Methods.
+Abstract Method: Method with No definition. It has only Declaration
+Constant: Constant is Variable which contains Constant Value which can not modify
+
+Interface with no Methods is called Marker interface.
+Marker interface: is a special interface used to give Special instructions to Java while creating the Object of child class of that Marker interface.
+
+Abstract Class: is class which contains data members and set of concrete methods and/or abstract methods.
+For abstract class we can not create object.
+
+abstract class Car {
+	
+	int data;
+	
+	void driveCar(){
+		System.out.println("driving car");
+	}
+	abstract void soundHorn();
+}
+
+class kiaCar extends Car {
+	
+	void soundHorn(){
+		System.out.println("Sound horn");
+	}	
+}
+
+
+
 
 
 
