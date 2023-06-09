@@ -600,7 +600,8 @@ Constant: Constant is Variable which contains Constant Value which can not modif
 Interface with no Methods is called Marker interface.
 Marker interface: is a special interface used to give Special instructions to Java while creating the Object of child class of that Marker interface.
 
-Abstract Class: is class which contains data members and set of concrete methods and/or abstract methods.
+Abstract Class: is a class which contains data members and set of concrete methods and/or abstract methods.
+
 For abstract class we can not create object.
 
 abstract class Car {
@@ -610,6 +611,7 @@ abstract class Car {
 	void driveCar(){
 		System.out.println("driving car");
 	}
+	
 	abstract void soundHorn();
 }
 
@@ -620,8 +622,41 @@ class kiaCar extends Car {
 	}	
 }
 
+09-JUNE-2023
+------------
+interface Car {
+	void driveCar();
+	void soundHorn();
+}
+class KiaXCar implements Car {
+	public void driveCar(){
+		System.out.println("driving x car");
+	}
+	public void soundHorn(){
+		System.out.println("sound x car horn");
+	}
+}
+class KiaYCar implements Car {
+	public void driveCar(){
+		System.out.println("driving y car");
+	}
+	public void soundHorn(){
+		usePopSoundDriverAndMakeSound();
+	}
+	public void usePopSoundDriverAndMakeSound(){
+		System.out.println("sound y car horn");
+	}
+}
+650- Car xCar = new KiaXCar();
+651- xCar.driveCar();
+652- xCar.soundHorn();
 
+654- Car yCar = new KiaYCar();
+655- yCar.driveCar();
+656- yCar.soundHorn();
 
-
-
+651-driving x car
+652-sound x car horn
+655-driving y car
+656-sound y car horn
 
