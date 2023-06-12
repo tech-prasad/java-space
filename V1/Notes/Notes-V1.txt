@@ -590,7 +590,7 @@ public class NumberProcessor {
 --------------
 Abstraction is process hiding unnecessary details and represent required details.
 
-To achieve Abstraction we have to use Interfaces and Abstract classes
+To achieve Abstraction, we have to use Interfaces and/or Abstract classes with Inheritance.
 
 Interface: 
 Interface is a contract to the class and it has set of Constants and Abstract Methods.
@@ -659,4 +659,45 @@ class KiaYCar implements Car {
 652-sound x car horn
 655-driving y car
 656-sound y car horn
+
+12-JUNE-2023
+------------
+4. Polymorphism
+
+Polymorphism refers to many forms.
+As per Polymorphism, We can perform one action in many ways.
+
+to achieve Polymorphism, we have to use Interfaces and/or Abstract classes with Inheritance.
+
+to achieve Polymorphism, we use below
+-> method overloading
+-> method overriding
+
+Method: set of instructions given to perform specific functionality.
+Every method has a Signature.
+
+As part of method, we have Signature and Instructions
+
+Signature refers to accessSpecifier, returnType, methodName, parameters of a method
+
+for Signature, functionality does not matter
+Parameters: name does not matter. 
+number of parameters matters, data type matters and order matters
+
+public void driveCar(){
+	System.out.println("Driving car");
+}
+
+Syntax:
+accessSpecifier returnType methodName(parameters) {
+	// instructions
+}
+
+-> method overloading
+
+
+
+
+
+
 
