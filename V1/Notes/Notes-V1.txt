@@ -669,31 +669,47 @@ As per Polymorphism, We can perform one action in many ways.
 
 to achieve Polymorphism, we have to use Interfaces and/or Abstract classes with Inheritance.
 
-to achieve Polymorphism, we use below
--> method overloading
--> method overriding
+We have 2 types of Polymorphism,
+-> Method overloading
+-> Method overriding
 
 Method: set of instructions given to perform specific functionality.
+
+Method Syntax:
+accessSpecifier returnType methodName(parameters) {
+	// instructions
+}
+
+public void driveCar(int data){
+	System.out.println("Driving car: "+data);
+}
+
 Every method has a Signature.
 
 As part of method, we have Signature and Instructions
 
 Signature refers to accessSpecifier, returnType, methodName, parameters of a method
 
-for Signature, functionality does not matter
-Parameters: name does not matter. 
-number of parameters matters, data type matters and order matters
-
-public void driveCar(){
-	System.out.println("Driving car");
-}
-
-Syntax:
 accessSpecifier returnType methodName(parameters) {
 	// instructions
 }
 
--> method overloading
+Signature {
+	// instructions
+}
+
+With respect to Signature->
+	functionality does not matter,
+	parameters names does not matter,
+	number of parameter matters,
+	parameter data type matters and
+	parameter order matters
+
+13-JUNE-2023
+------------
+-> Method overloading
+Multiple methods with same name with different Signature is called Method overloading.
+Compile-time Polymorphism.
 
 
 
