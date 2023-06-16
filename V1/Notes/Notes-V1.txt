@@ -709,7 +709,8 @@ With respect to Signature->
 ------------
 -> Method overloading
 Multiple methods with same name with different Signature is called Method overloading.
-Compile-time Polymorphism.
+It is called Compile-time Polymorphism.
+It is called Static Polymorphism.
 
 public class NumberProcessor {
 	public void addAndPrint(int data){
@@ -746,12 +747,79 @@ O/P:
 188
 188.8
 
+16-JUNE-2023
+------------
 -> Method overriding
 
+Method overriding is process having same method in Parent and child interface/class
+- Parent and child class relationship(Inheritance) is mandatory
+Same method: accessSpecifier returnType Signature
+It is Runtime-Polymorphism.
+It is called Dynamic Polymorphism.
+Dynamic method dispatch.
 
 
+interface Car {
+	public abstract void driveCar();
+	public abstract void soundHorn();
+}
+class KiaCar implements Car {
+	public void driveCar() {
+		System.out.println("Driving KiaCar");
+	}
+	public void soundHorn(){
+		System.out.println("Making sound from KiaCar");
+	}
+}
+class KiaXCar extends KiaCar {
+	public void soundHorn(){
+		System.out.println("Making sound from KiaXCar");
+	}
+}
+public class MethodOverRidingSecondExample {
+	public static void main(String[] arr){
+		Car car = new KiaCar();
+		
+		car.driveCar();
+		
+		car.soundHorn();
+		
+		Car carX = new KiaXCar();
+		
+		carX.driveCar();
+		
+		carX.soundHorn();
+	}
+}
 
+super keyword:
+--------------
+- super() is used in child class constructor to call Parent class constructor to initialize data members of parent class
+- super keyword used to access data members of parent class in child class
+- super keyword used to access methods of parent class in child class
 
-
-
+class Parent {
+	int number1 = 3;
+	public void print(){
+		System.out.println("Print from Parent: "+ number1);
+	}
+}
+class Child extends Parent {
+	public Child(){
+		super();
+		number1 = 8;
+	}
+	int number1 = 0;
+	public void print(){
+		super.print();
+		System.out.println("Print from Child with parent Value: "+ super.number1);
+		System.out.println("Print from Child: "+ (number1+2));
+	}
+}
+public class NumberProcessor{
+	public static void main(String[] array){
+		Child ref = new Child();
+		ref.print();
+	}
+}
 
