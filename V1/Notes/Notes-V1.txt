@@ -751,13 +751,12 @@ O/P:
 ------------
 -> Method overriding
 
-Method overriding is process having same method in Parent and child interface/class
+Method overriding is process having same method in Child class and Parent interface/class
 - Parent and child class relationship(Inheritance) is mandatory
 Same method: accessSpecifier returnType Signature
-It is Runtime-Polymorphism.
-It is called Dynamic Polymorphism.
-Dynamic method dispatch.
-
+It is Runtime-Polymorphism - Method called at runtime based on Object created
+It is called Dynamic Polymorphism - Method called based on objected
+Dynamic method dispatch - Method called based on objected
 
 interface Car {
 	public abstract void driveCar();
@@ -795,6 +794,7 @@ public class MethodOverRidingSecondExample {
 super keyword:
 --------------
 - super() is used in child class constructor to call Parent class constructor to initialize data members of parent class
+- super(parameters) - is used in child class constructor to call parameterized constructor of the parent class
 - super keyword used to access data members of parent class in child class
 - super keyword used to access methods of parent class in child class
 
@@ -820,6 +820,131 @@ public class NumberProcessor{
 	public static void main(String[] array){
 		Child ref = new Child();
 		ref.print();
+	}
+}
+
+19-JUNE-2023
+------------
+Constructor Overloading:
+It is the process of Multiple Constructors with different Signature
+Example:
+Parent()
+Parent(int a)
+
+class Parent {
+	int number1;
+	int number2;
+	double number3;
+	
+	public Parent(){
+	}
+	public Parent(int a){
+		number1 = a;
+	}
+	public Parent(int a, int b){
+		number1 = a;
+		number2 = b;
+	}
+	public Parent(int a, double b){
+		number1 = a;
+		number3 = b;
+	}
+	public Parent(int a, int b, double c){
+		number1 = a;
+		number2 = b;
+		number3 = c;
+	}
+	public void print(){
+		System.out.println("Print number1 from Parent: "+ number1);
+		System.out.println("Print number2 from Parent: "+ number2);
+		System.out.println("Print number3 from Parent: "+ number3);
+	}
+}
+class Child extends Parent {
+	int number1;
+	
+	public Child(){
+		super();
+		number1 = 99;
+	}
+	public Child(int a){
+		super();
+		number1 = 77;
+	}
+	public Child(int a, double c){
+		super(a, c);
+		number1 = 77;
+	}	
+	public void print(){
+		super.print();
+		System.out.println("Print from Child with parent Value: "+ super.number1);
+		System.out.println("Print from Child: "+ (number1+2));
+	}
+}
+public class NumberProcessor{
+	public static void main(String[] array){
+		Child ref = new Child();
+		ref.print();
+		
+		Child ref1 = new Child(565);
+		ref1.print();
+		
+		Child ref2 = new Child(12, 56.45);
+		ref2.print();
+	}
+}
+
+this keyword:
+-------------
+this() - used to call zero parameterized constructor of the same class from another constructor of the same class
+
+
+class Parent {
+	int number1;
+	int number2;
+	
+	public Parent(){
+		this(1, 2);
+		System.out.println("From zero parameterized constructor");
+	}
+	public Parent(int a){
+		this();
+		number1 = a;
+	}
+	public Parent(int a, int b){
+		number1 = a;
+		number2 = b;
+	}
+	public void print(){		
+		System.out.println("Print number1 from Parent: "+ number1);
+		System.out.println("Print number2 from Parent: "+ number2);
+	}
+}
+class Child extends Parent {
+	int number1;
+	
+	public Child(){
+		super(33);
+		number1 = 77;
+	}
+	public Child(int a){
+		number1 = a;
+	}
+	public Child(int a, int c){
+		this(a);
+		number1 = a;
+	}	
+	public void print(){
+		super.print();
+		System.out.println("Print from Child with parent Value: "+ super.number1);
+		System.out.println("Print from Child: "+ (number1+2));
+	}
+}
+public class NumberProcessor2{
+	public static void main(String[] array){
+		Child ref = new Child(565, 4);
+		ref.print();
+		
 	}
 }
 
