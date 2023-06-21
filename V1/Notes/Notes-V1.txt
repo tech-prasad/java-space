@@ -1019,10 +1019,10 @@ Object class
 Object is a class.
 Object is a Predefined class in Java.
 Every class in Java is a child of Object class directly or indirectly.
-All classes are child of Object class directly or indirectly.
+All classes are child classes of Object class directly or indirectly.
 
 -- If we don't extend our class from any other class,
-then compiler will give Object as a default parent.
+then compiler will give Object class as a default parent.
 
 Object class has 9 methods as below
 
@@ -1058,12 +1058,13 @@ public class Calculator extends Object {
 Compilation process:
 --------------------
 In Java, we use "javac" command to compile the code.
+Syntax: javac ClassName.java
 Ex: javac Calculator.java
 
 What happens when we compile code?
-1. Check for Syntax errors
-	i. Java provided Keywords
-	ii. Symbols like braces, dots, quotes
+1. Check for Syntax and Semantic errors
+	i. Java provided Keywords spelled correctly or not
+	ii. Symbols like braces, dots, quotes, semi colon, etc
 	iii. Variables used are present in class
 	iv. Methods used are present in class
 	v. Method declaration correct or not
@@ -1071,9 +1072,39 @@ What happens when we compile code?
 	
 2. If class does not have any direct Parent it will add Object class as Parent
 3. Default constructor will be added if there are no constructors defined
-4. super() will be added as a first statement in Child Constructor if it is not added
-5. When we implements interface, it will check the child class provided definition to all the interface abstract methods or not
+4. super() will be added as a first statement in Child Class Constructor if it is not added
+5. When we implements interface, it will check, child class provided definition to all the interface abstract methods or not
 6. If we create a object of a class and place it in other interface or class reference variable, then compiler check the relationship between the involved interface and classes
-7. when we use a data member using reference variable, then compiler will check the variable is present in that class or its parent class, if its not there in that class or parent class then compiler will give error
-8. when we call a method using reference variable, then compiler will check the method is present in that class or its parent class, if its not there in that class or parent class then compiler will give error
+7. When we use a data member using reference variable, then compiler will check the variable is present in that class or its parent class, if its not there in that class or parent class then compiler will give error
+8. When we call a method using reference variable, then compiler will check the method is present in that class or its parent class, if its not there in that class or parent class then compiler will give error
+9. Once all checks complete and no errors found, compilation will be completed successfully
+
+What happens when Compile completed successfully?
+1. for every class one ".class" file will be created
+   Name of ".class" file will be ClassName.class
+   Ex: Calculator.class
+2. If we have multiple classes declared in single .java file then after compilation,
+   separate .class file will be created based on the number of classes present that .java file
+3. In generated ".class" file, byte code will be placed
+
+Who will use ".class" file?
+1. Java will use the ".class" file
+2. At the time of running code, Java uses ".class" file
+
+Execution/Running process:
+--------------------------
+In Java, we use "java" command to run the code.
+Syntax: java ClassName
+Ex: java Calculator
+
+What happens when we run the code?
+Java look for ".class" file with ClassName we provided
+If Java finds, ".class" file then Java look for main() method in Provided class
+If Java finds, main() method then it will start executing method by calling it
+	Syntax of main() method Java look for:
+	public static void main(String[] paramName){}
+We should not give .class extension while running the code
+
+
+
 
