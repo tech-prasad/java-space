@@ -1055,6 +1055,9 @@ public class Calculator extends Object {
 	}
 }
 
+21-JUNE-2023
+------------
+
 Compilation process:
 --------------------
 In Java, we use "javac" command to compile the code.
@@ -1091,6 +1094,8 @@ Who will use ".class" file?
 1. Java will use the ".class" file
 2. At the time of running code, Java uses ".class" file
 
+22-JUNE-2023
+------------
 Execution/Running process:
 --------------------------
 In Java, we use "java" command to run the code.
@@ -1098,13 +1103,75 @@ Syntax: java ClassName
 Ex: java Calculator
 
 What happens when we run the code?
-Java look for ".class" file with ClassName we provided
-If Java finds, ".class" file then Java look for main() method in Provided class
-If Java finds, main() method then it will start executing method by calling it
+JVM look for ".class" file with ClassName we provided
+If JVM finds, ".class" file then Java look for main() method in Provided class
+If JVM finds, main() method then it will start executing method by calling it
 	Syntax of main() method Java look for:
 	public static void main(String[] paramName){}
 We should not give .class extension while running the code
 
+JVM - Java Virtual Machine
+--------------------------
+Java is a Execution Engine
+JVM will run the Java Code
 
+When we use java command to run the code JVM gets started.
+Once started memory will be allocated to JVM
+If we create objects, memory will be allocated in side JVM
+
+JVM Is divided into multiple
+----------------------------
+1. Class Loader
+2. Runtime Data Area
+3. Execution Engine
+4. Java Native Interface
+5 Garbage Collector
+
+1. Class Loader
+---------------
+Class loader is used to Load the Class into Method Area Memory of JVM
+If the loaded class use any other class then Class loader will load that class also
+Once class is loaded, it will identify Data members and Methods and memory will allocated
+Class loader only stores the Meta data of the class into memory
+Ex: class name, variable type and method names with definition
+
+2. Runtime Data Area (JVM Memory)
+	JVM Memory:
+	-----------
+	Method Area
+	Heap
+	Java Stack
+	PC Register
+	Native Method Stack
+
+	Method Area Memory:
+	Method area is used to allocate memory to meta data of the class
+	Method area is used to allocate memory to the Local variables
+
+	Heap Memory:
+	When we create object, memory will be allocated inside Heap memory
+	Heap Memory is used to allocate memory to Instance variables of the class and its Parent class
+
+	Java Stack:
+	Java Stack is used to hold the Currently executing User defined, predefined methods.
+	If we call a method, method will be placed in Java Stack, from that method if we call any other method that also placed Java Stack
+	Only User defined, predefined methods will be placed in Java Stack.
+
+	PC Register:
+	PC Register points to Currently executing instruction.
+
+	Native Method Stack:
+	Native Method is method coming from Other programming languages.
+	Native Method Stack is used to hold the Currently executing native method.
+
+3. Execution Engine
+Interpreter
+JIT Compiler (Just-In-Time)
+
+Interpreter: It is used to execute the instructions line by line
+It converts Java instructions into Machine level instructions/Machine Language
+It passes that Machine level instructions to Processor/CPU
+
+JIT Compiler: 
 
 

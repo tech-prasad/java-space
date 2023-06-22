@@ -39,7 +39,7 @@ class Child extends Parent {
 		System.out.println("Print from Child: "+ (number1+2));
 	}
 	public void printNumbers(){
-		int number1 = 58;
+		int number1 = 58; 
 		System.out.println("Print Local variable: "+ (number1+2));
 		System.out.println("Print Instance variable: "+ (this.number1+2));
 		System.out.println("Print Instance variable from parent: "+ (super.number1+2));
@@ -53,7 +53,8 @@ class Child extends Parent {
 public class ThisExample extends Object{
 	public static void main(String[] array){
 		Child ref = new Child(565, 4);
-		ref.print();		
+		ref.print();
 		ref.printNumbers();
+		ref.useMethods();
 	}
 }
