@@ -1057,7 +1057,6 @@ public class Calculator extends Object {
 
 21-JUNE-2023
 ------------
-
 Compilation process:
 --------------------
 In Java, we use "javac" command to compile the code.
@@ -1105,27 +1104,29 @@ Ex: java Calculator
 What happens when we run the code?
 JVM look for ".class" file with ClassName we provided
 If JVM finds, ".class" file then Java look for main() method in Provided class
+
 If JVM finds, main() method then it will start executing method by calling it
 	Syntax of main() method Java look for:
 	public static void main(String[] paramName){}
+
 We should not give .class extension while running the code
 
 JVM - Java Virtual Machine
 --------------------------
-Java is a Execution Engine
+JVM is a Execution Engine
 JVM will run the Java Code
 
 When we use java command to run the code JVM gets started.
 Once started memory will be allocated to JVM
 If we create objects, memory will be allocated in side JVM
 
-JVM Is divided into multiple
-----------------------------
+JVM has below components
+------------------------
 1. Class Loader
 2. Runtime Data Area
 3. Execution Engine
 4. Java Native Interface
-5 Garbage Collector
+5. Garbage Collector
 
 1. Class Loader
 ---------------
@@ -1165,13 +1166,27 @@ Ex: class name, variable type and method names with definition
 	Native Method Stack is used to hold the Currently executing native method.
 
 3. Execution Engine
-Interpreter
-JIT Compiler (Just-In-Time)
+	Two components:
+	---------------
+	Interpreter
+	JIT Compiler (Just-In-Time)
 
-Interpreter: It is used to execute the instructions line by line
-It converts Java instructions into Machine level instructions/Machine Language
-It passes that Machine level instructions to Processor/CPU
+	Interpreter: 
+	It is used to execute the instructions line by line
+	It converts Java instructions into Machine level instructions/Machine Language
+	It passes that Machine level instructions to Processor/CPU
 
-JIT Compiler: 
+	JIT Compiler: 
+	It used to help Interpreter with Java Instructions which already converted into Machine level instructions,
+	So that Interpreter do not need to convert Java Instructions into Machine level instructions again and again.
+	
+	So with the help of JIT Compiler, Interpreter will execute instructions fastly by passing it to Processor.
 
+4. Java Native Interface (JNI)
+   JVM uses JNI to call Native methods
+   
+5. Garbage Collector
+   It used to clean unused Objects in JVM Memory.
+   When JVM shutdown, Garbage Collector cleanup all objects memory.
+   In case if execution still progress but there are some unused objects are there which are Eligible for Garbage Collector to cleanup, in that case it is up to Garbage Collector, when to clean up those unused objects.
 
