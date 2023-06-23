@@ -1190,3 +1190,21 @@ Ex: class name, variable type and method names with definition
    When JVM shutdown, Garbage Collector cleanup all objects memory.
    In case if execution still progress but there are some unused objects are there which are Eligible for Garbage Collector to cleanup, in that case it is up to Garbage Collector, when to clean up those unused objects.
 
+
+
+-----------------------
+when we run java ThisExample
+JVM starts and memory will be allocated to JVM
+
+Class loader looks ThisExample.class file
+once found, class loader loads ThisExample.class file in to JVM Memory(Method Area)
+Memory will be allocated to Meta data of ThisExample class
+
+JVM look for main method in ThisExample class
+Once it found start executing
+
+method will be placed in stack
+PC register points to first instruction
+Interpreter converts that instruction to machine level instruction
+Interpreter passes that machine level instruction to Processor
+----------------------------
