@@ -262,7 +262,6 @@ public class Test {
 	}
 }
 
-
 2. Multi-Level
 It is the Process of having Single Parent-Child Chain Relationship
 
@@ -1093,8 +1092,8 @@ Who will use ".class" file?
 1. Java will use the ".class" file
 2. At the time of running code, Java uses ".class" file
 
-22-JUNE-2023
-------------
+22-JUNE-2023 / 23-JUNE-2023
+---------------------------
 Execution/Running process:
 --------------------------
 In Java, we use "java" command to run the code.
@@ -1116,9 +1115,9 @@ JVM - Java Virtual Machine
 JVM is a Execution Engine
 JVM will run the Java Code
 
-When we use java command to run the code JVM gets started.
+When we use 'java' command to run the code JVM gets started.
 Once started memory will be allocated to JVM
-If we create objects, memory will be allocated in side JVM
+If we create objects, memory will be allocated to objects in JVM
 
 JVM has below components
 ------------------------
@@ -1130,11 +1129,12 @@ JVM has below components
 
 1. Class Loader
 ---------------
-Class loader is used to Load the Class into Method Area Memory of JVM
-If the loaded class use any other class then Class loader will load that class also
-Once class is loaded, it will identify Data members and Methods and memory will allocated
-Class loader only stores the Meta data of the class into memory
-Ex: class name, variable type and method names with definition
+Class loader is used to Load the Class into JVM Memory(Method Area).
+If the loaded class uses any other class then Class loader will load that class also.
+Once class is loaded, it will identify Data members and Methods and memory will allocated.
+Class loader only stores the Meta data of the class into memory.
+Ex: class name, variable type and method names with definition, etc.
+Once class is loaded in to JVM memory, If the class contains static variables, then memory will be allocated to static variables and initialized with default values or user given values
 
 2. Runtime Data Area (JVM Memory)
 	JVM Memory:
@@ -1177,7 +1177,7 @@ Ex: class name, variable type and method names with definition
 	It passes that Machine level instructions to Processor/CPU
 
 	JIT Compiler: 
-	It used to help Interpreter with Java Instructions which already converted into Machine level instructions,
+	It used to help Interpreter with Java Instructions which are already converted into Machine level instructions,
 	So that Interpreter do not need to convert Java Instructions into Machine level instructions again and again.
 	
 	So with the help of JIT Compiler, Interpreter will execute instructions fastly by passing it to Processor.
@@ -1208,3 +1208,25 @@ PC register points to first instruction
 Interpreter converts that instruction to machine level instruction
 Interpreter passes that machine level instruction to Processor
 ----------------------------
+
+26-JUNE-2023
+------------
+Object creation process:
+------------------------
+1. Object creation starts
+2. Memory will be allocated to all instance data members
+3. Initialize all the instance data members with default values
+4. Constructor gets called to initialize instance data members with specific values
+5. Object creation completed
+
+static:
+-------
+static is key word in Java.
+static is used to create class level data members and class level methods
+static is used to create class level variables and class level methods
+
+class level variable: it a is variable and will be declared with static key word and we call the variable as static variable
+syntax:  static datatype variableName;
+example: static int a; //- static variable a
+Memory will be allocated to static variables at the time of class loading.
+static variables gets initialized at the time of class loading.
