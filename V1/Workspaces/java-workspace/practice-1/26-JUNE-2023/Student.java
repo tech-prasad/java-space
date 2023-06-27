@@ -1,8 +1,8 @@
 public class Student {
 	int rollNumber;
 	String studentName;
-	static String collegeName = "CBIT";	
 	int marks;	
+	static String collegeName = "CBIT";
 	public Student(int a, String b, int d){
 		rollNumber = a;
 		studentName = b;

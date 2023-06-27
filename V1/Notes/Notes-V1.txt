@@ -985,9 +985,9 @@ class Child extends Parent {
 	public Child(int a){
 		number1 = a;
 	}
-	public Child(int a, int c){
-		this(a);
-		number1 = a;
+	public Child(int number1, int c){
+		this(number1);
+		this.number1 = number1;
 	}	
 	public void print(){
 		super.print();
@@ -1190,8 +1190,6 @@ Once class is loaded in to JVM memory, If the class contains static variables, t
    When JVM shutdown, Garbage Collector cleanup all objects memory.
    In case if execution still progress but there are some unused objects are there which are Eligible for Garbage Collector to cleanup, in that case it is up to Garbage Collector, when to clean up those unused objects.
 
-
-
 -----------------------
 when we run java ThisExample
 JVM starts and memory will be allocated to JVM
@@ -1230,3 +1228,96 @@ syntax:  static datatype variableName;
 example: static int a; //- static variable a
 Memory will be allocated to static variables at the time of class loading.
 static variables gets initialized at the time of class loading.
+We can access static variables with class name itself, no need to creating object.
+
+27-JUNE-2023
+------------
+class level method: it is a method and will be declared with static key word and we call the method as static method.
+syntax: static returnType signature(){}
+example: static void main(){}
+
+We can access static methods with class name itself, no need to creating object.
+
+We are creating main method as static so while executing JVM will call main method directly by using provided class name with out creating object.
+
+public class Student {
+	int rollNumber;
+	String studentName;
+	int marks;	
+	static String collegeName;
+	
+	public Student(){}
+	public Student(int rollNumber, String studentName, int marks){
+		this.rollNumber = rollNumber;
+		this.studentName = studentName;
+		this.marks = marks;
+	}
+	public void print() {
+		System.out.printf("rollNumber: %d, studentName: %s, marks: %d, collegeName: %s\n", rollNumber, studentName, marks, collegeName);
+	}
+	public static void printCollegeName(){
+		System.out.printf("collegeName: %s\n", collegeName);
+	}
+	public static void main(String[] arr){		
+		Student.collegeName = "CBIT";
+		
+		Student.printCollegeName();
+
+		Student s1 = new Student();
+		s1.rollNumber = 2;
+		s1.studentName = "Bharat";
+		s1.marks = 678;	
+		
+		s1.print();		
+
+		Student s2 = new Student(3, "Chandu", 555);
+		s2.print();
+	}
+}
+
+Instance reference variable:
+----------------------------
+If we create a reference variable of a class in other class as instance variable then it is called Instance reference variable.
+When we create Instance reference variable in a class then that relationship is called as "HAS A" relationship.
+
+class Address {
+	String houseNumber;
+	String city;
+	String state;
+	String country;
+	
+	Address(String houseNumber, String city, String state, 	String country){
+		this.houseNumber=houseNumber;
+		this.city=city;
+		this.state=state;
+		this.country=country;		
+	}
+	public void printAddress(){
+		System.out.printf("%S, %S, %S, %S\n", houseNumber,city,state,country);
+	}
+}
+public class Person {
+	String name;
+	int age;
+	String gender;
+	Address address;
+	
+	Person(String name, int age, String gender, Address address){
+		this.name=name;
+		this.age=age;
+		this.gender=gender;	
+		this.address = address;
+	}	
+	public void print() {
+		System.out.printf("%S, %d, %S, %S\n", name,age,gender,address.country);
+		address.printAddress();
+	}	
+	public static void main(String[] arr){	
+		
+		Address addressReference = new Address("9-889", "Hydrabad", "Telangana", "India");
+	
+		Person p = new Person("Anil", 33, "Male", addressReference);
+		
+		p.print();		
+	}
+}
