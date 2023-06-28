@@ -185,6 +185,8 @@ It is a process of acquiring the properties of Parent/Super class into Child/Sub
 It is a process of acquiring the Data and Functionality of Parent/Super class into Child/Sub class
 It is a process of extending the properties of Parent class into Child class
 
+The main goal of Inheritance is establishing Relationship, with that additionally we get to reuse some piece of code.
+
 Inheritance is called "IS A" Relationship
 
 Parent/Super/Base
@@ -1240,6 +1242,8 @@ We can access static methods with class name itself, no need to creating object.
 
 We are creating main method as static so while executing JVM will call main method directly by using provided class name with out creating object.
 
+In side static method, we can not use instance variables and methods directly, but by creating object and with that reference we can use instance variables and methods in static method.
+
 public class Student {
 	int rollNumber;
 	String studentName;
@@ -1256,13 +1260,17 @@ public class Student {
 		System.out.printf("rollNumber: %d, studentName: %s, marks: %d, collegeName: %s\n", rollNumber, studentName, marks, collegeName);
 	}
 	public static void printCollegeName(){
-		System.out.printf("collegeName: %s\n", collegeName);
+		Student s = new Student(4, "Dharma", 675);
+		
+		System.out.printf("rollNumber: %d, studentName: %s, marks: %d, collegeName: %s\n", s.rollNumber, s.studentName, s.marks, collegeName);
+		
+		s.print();
 	}
 	public static void main(String[] arr){		
 		Student.collegeName = "CBIT";
 		
 		Student.printCollegeName();
-
+		
 		Student s1 = new Student();
 		s1.rollNumber = 2;
 		s1.studentName = "Bharat";
@@ -1271,15 +1279,20 @@ public class Student {
 		s1.print();		
 
 		Student s2 = new Student(3, "Chandu", 555);
-		s2.print();
+		s2.print();		
 	}
 }
 
-Instance reference variable:
+Composition:
 ----------------------------
-If we create a reference variable of a class in other class as instance variable then it is called Instance reference variable.
+If we create a reference variable of a class in other class as instance variable then it is called Composition.
 When we create Instance reference variable in a class then that relationship is called as "HAS A" relationship.
+So Composition refers to "HAS A" relationship.
 
+The main goal of Composition is re-usability.
+We even can organize the code and modularize the code using Composition.
+
+Address.java file:
 class Address {
 	String houseNumber;
 	String city;
@@ -1296,6 +1309,8 @@ class Address {
 		System.out.printf("%S, %S, %S, %S\n", houseNumber,city,state,country);
 	}
 }
+
+Person.java file:
 public class Person {
 	String name;
 	int age;
@@ -1318,6 +1333,12 @@ public class Person {
 	
 		Person p = new Person("Anil", 33, "Male", addressReference);
 		
-		p.print();		
+		p.print();
 	}
 }
+
+package:
+package is folder where we can place java files to modularize code and provides easy access to the code.
+We create packages based on functionality and place similar java files which serve that functionality.
+
+
