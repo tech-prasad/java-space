@@ -1338,7 +1338,87 @@ public class Person {
 }
 
 package:
-package is folder where we can place java files to modularize code and provides easy access to the code.
-We create packages based on functionality and place similar java files which serve that functionality.
+package is folder where we can group java files to modularize/organize code and provides easy access to the code.
+We create packages based on functionality and group similar java files which serve that functionality.
 
+By using packages, We can avoid Naming collision or Naming conflicts.
 
+To create packages in java, we have to use 'package' keyword.
+
+Package naming convention:
+Syntax: package com.companydomain.projectname.modulename;
+Example: package com.icicibank.netbank.payments;
+		 package com.icicibank.netbank.common;
+		 package com.icicibank.netbank.staff;
+
+project
+ -> com
+	-> companydomain
+		-> projectname
+			-> modulename
+
+netbank
+ -> com
+	 -> icicibank
+		-> netbank
+			-> staff
+---------	
+package com.icicibank.netbank.common;
+
+public class Address {
+	String houseNumber;
+	String city;
+	String state;
+	String country;
+	
+	Address(String houseNumber, String city, String state, 	String country){
+		this.houseNumber=houseNumber;
+		this.city=city;
+		this.state=state;
+		this.country=country;		
+	}
+	public void printAddress(){
+		System.out.printf("%S, %S, %S, %S\n", houseNumber,city,state,country);
+	}
+}			
+---------
+package com.icicibank.netbank.staff;
+
+import com.icicibank.netbank.common.Address;
+
+public class Manager {
+	
+	int managerId;
+	String name;
+	String email;
+	String phoneNumber;
+	Address address;
+	
+	public static void main(String[] arr){
+		System.out.println("Manager testing");
+	}	
+}
+---------
+Compilation:
+Syntax: javac -d . ClassName.java
+Example: javac -d . Manager.java
+
+Execution:
+Syntax: java package.ClassName
+Example: java com.icicibank.netbank.staff.Manager
+
+Use classes from packages.
+Syntax: import followed by package name;
+Example: import com.icicibank.netbank.common.Address;
+
+Java language also has predefined package.
+Ex: 
+java.lang
+java.util
+
+Object class is coming from java.lang package.
+
+Use classes from predefined packages.
+Syntax: import followed by package name;
+Example: import java.lang.*
+java.lang is default package every imports
