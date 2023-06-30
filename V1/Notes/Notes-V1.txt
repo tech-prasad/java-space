@@ -1421,4 +1421,135 @@ Object class is coming from java.lang package.
 Use classes from predefined packages.
 Syntax: import followed by package name;
 Example: import java.lang.*
-java.lang is default package every imports
+java.lang is default package every class imports
+
+
+Access Specifiers:
+------------------
+Access Specifier is used to decide visibility of classes, interfaces, variables and methods.
+
+1. public
+2. protected
+3. default
+4. private
+
+1. public:
+public is keyword and acts a Access Specifier.
+
+public is used with classes, interfaces, constructors, variables and methods.
+
+When we use public with classes, interfaces, constructors, variables and methods, then we will get full visibility to access classes, interfaces, constructors, variables and methods.
+
+When we use public, there are no restrictions applicable.
+
+2. protected:
+protected is keyword and acts a Access Specifier.
+
+protected is used with constructors, variables and methods.
+
+When we use protected with constructors, variables and methods then we will get restricted visibility to access constructors, variables and methods.
+
+If we use protected, visibility applicable for only that package.
+
+So, if we use protected with constructors, variables and methods then they will be accessible with in the same package or child class from other package.
+
+
+=========================
+Assignments:
+=========================
+1. Student Management System
+
+Address: flatNo, city, state, country
+
+College: name, type, collegeAddess
+
+Library: name, libraryAddess
+
+Student: rollNumber, name, age, address, college, library
+
+print(){
+	System.println("Student details");
+	System.println(rollNumber); 
+	System.println(name); 
+	System.println(age);
+	System.println(studentAddess.flatNo);
+	System.println(studentAddess.city);
+	System.println(studentAddess.state);
+	System.println(studentAddess.country);
+
+	System.println("College details");
+	System.println(college.name);
+	System.println(college.type);
+	System.println(college.collegeAddess.flatNo);
+	System.println(college.collegeAddess.city);
+	System.println(college.collegeAddess.state);
+	System.println(college.collegeAddess.country);
+
+	System.println("Library details");
+	System.println(library.name);
+	System.println(library.libraryAddess.flatNo);
+	System.println(library.libraryAddess.city);
+	System.println(library.libraryAddess.state);
+	System.println(library.librarygeAddess.country);
+}
+
+StudentManagementSystem.java
+main(){
+Input:
+	collegeAddess = Address("1-2222", "Hyderabad", "TS", "India");
+	librayAddess = Address("1-2223", "Hyderabad", "TS", "India");
+	studentAddess = Address("5-67", "Pune", "MH", "India");
+
+	college = College("CBIT", "BTech", collegeAddess);
+
+	library = Library("Abcaus", librayAddess);
+
+	student = Student(1, "Anil", 23, studentAddess, college, library);
+
+	student.print();
+}
+output:
+Student details
+1
+Anil,
+23,
+5-67
+Pune
+MH
+India
+
+College details
+CBIT
+BTech
+1-2222
+Hyderabad
+TS
+India
+
+Library details
+Abcaus
+1-2223
+Hyderabad
+TS
+India
+
+======================================
+
+Calculator.java
+
+a, b
+
+add(){} + c = a + b; System.out.println("Add: "+ c);
+sub(){} -
+mul(){} *
+div(){} /
+
+main(){
+	Calculator(2, 6);
+	
+	add();
+	sub();
+	mul();
+	div();
+}
+=========================
