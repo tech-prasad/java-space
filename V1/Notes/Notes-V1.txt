@@ -1423,37 +1423,6 @@ Syntax: import followed by package name;
 Example: import java.lang.*
 java.lang is default package every class imports
 
-
-Access Specifiers:
-------------------
-Access Specifier is used to decide visibility of classes, interfaces, variables and methods.
-
-1. public
-2. protected
-3. default
-4. private
-
-1. public:
-public is keyword and acts a Access Specifier.
-
-public is used with classes, interfaces, constructors, variables and methods.
-
-When we use public with classes, interfaces, constructors, variables and methods, then we will get full visibility to access classes, interfaces, constructors, variables and methods.
-
-When we use public, there are no restrictions applicable.
-
-2. protected:
-protected is keyword and acts a Access Specifier.
-
-protected is used with constructors, variables and methods.
-
-When we use protected with constructors, variables and methods then we will get restricted visibility to access constructors, variables and methods.
-
-If we use protected, visibility applicable for only that package.
-
-So, if we use protected with constructors, variables and methods then they will be accessible with in the same package or child class from other package.
-
-
 =========================
 Assignments:
 =========================
@@ -1553,3 +1522,86 @@ main(){
 	div();
 }
 =========================
+30-JUNE-2023
+Access Specifiers:
+------------------
+Access Specifier is decides visibility of Java components.
+Access Specifier is decides way of accessing of Java components.
+Access Specifier is decides visibility of classes, interfaces, constructors, variables and methods.
+
+Also called as Access Modifiers.
+
+1. public
+2. protected
+3. default
+4. private
+
+1. public:
+public is keyword and acts a Access Specifier.
+
+public applicable for classes, interfaces, constructors, variables and methods.
+
+When we use public then we will get full visibility to access classes, interfaces, constructors, variables and methods.
+
+When we use public, there are no restrictions applicable.
+
+04-JULY-2023
+------------
+2. protected:
+protected is keyword and acts a Access Specifier.
+
+protected is applicable constructors, variables and methods.
+
+protected is not applicable for classes and interfaces.
+
+When we use protected then we will get restricted visibility to access constructors, variables and methods.
+
+If we use protected, visibility applicable for only that package.
+
+So, if we use protected then they will be accessible with in the same package or child class from other package.
+
+3. default:
+There is no keyword to give default Access Specifier.
+If we do not specify public protected, private then that is default access specifier.
+
+default is applicable classes, interfaces, constructors, variables and methods.
+
+If we use default, visibility applicable only in that package.
+
+4. private:
+private is a keyword and acts as Access Specifier.
+
+private is applicable for Classes, Constructors, variables and methods.
+private is not applicable for interfaces.
+
+if we use private, visibility applicable only in that class.
+
+Visibility:
+public :- any where(No Restriction)
+protected :- with in the package and child classes of other package
+												(Limited Restriction)
+default :- with in the package only (Limited Restriction)
+private :- with in the class only (Full Restriction)
+
+Applicable:
+public :- Classes, Interfaces, Constructors, Variables and Methods.
+protected :- Constructors, Variables and Methods.
+default :- Classes, Interfaces, Constructors, Variables and Methods.
+private :- Classes, Constructors, Variables and Methods.
+
+Access Modifiers:
+Access Modifiers alter the way of accessing Java components.
+Access Modifiers alter the way of accessing Classes, Variables and Methods.
+
+final:
+final is a key word and acts as a access modifier.
+
+final is used with class to restrict "IS A" relationship(Inheritance).
+
+final class can not extend to child class.
+by using final with class, we can enforce composition over inheritance.
+
+final is used with method to restrict method overriding.
+
+
+
