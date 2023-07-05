@@ -1550,9 +1550,9 @@ When we use public, there are no restrictions applicable.
 2. protected:
 protected is keyword and acts a Access Specifier.
 
-protected is applicable constructors, variables and methods.
+protected is applicable to constructors, variables and methods.
 
-protected is not applicable for classes and interfaces.
+protected is not applicable to classes and interfaces.
 
 When we use protected then we will get restricted visibility to access constructors, variables and methods.
 
@@ -1590,11 +1590,12 @@ default :- Classes, Interfaces, Constructors, Variables and Methods.
 private :- Classes, Constructors, Variables and Methods.
 
 Access Modifiers:
+-----------------
 Access Modifiers alter the way of accessing Java components.
 Access Modifiers alter the way of accessing Classes, Variables and Methods.
 
 final:
-final is a key word and acts as a access modifier.
+final is a keyword and acts as a access modifier.
 
 final is used with class to restrict "IS A" relationship(Inheritance).
 
@@ -1603,5 +1604,84 @@ by using final with class, we can enforce composition over inheritance.
 
 final is used with method to restrict method overriding.
 
+final is used with variables to create constant variables.
+Once constant variable is initialized, value can not modified.
 
+We can initialize final variables at the time declaration or We can initialize final variables in constructor.
+
+If We initialize final variables at the time declaration then we can not assign the value to final variables in constructor.
+
+If We don't initialize final variables at the time declaration then we can initialize the value to final variables in constructor.
+
+final variables must be initialized.
+
+If we have multiple constructors, then in every constructor we have to initialize final variables.
+
+static:
+-------
+static is key word in Java and acts as a access modifier.
+static is used to create class level data members and class level methods
+static is used to create class level variables and class level methods
+
+class level variable: it a is variable and will be declared with static key word and we call the variable as static variable
+syntax:  static datatype variableName;
+example: static int a; //- static variable a
+Memory will be allocated to static variables at the time of class loading.
+static variables gets initialized at the time of class loading.
+We can access static variables with class name itself, no need to creating object.
+
+abstract:
+abstract is key word in Java and acts as a access modifier.
+by using abstract keyword we can create abstract methods and abstract classes.
+
+IDE: 
+----
+Full form Integrated development environment.
+
+We can project easily.
+We can create package organize code easily.
+We can create classes faster with some code already placed.
+We can take help of auto suggestions.
+We can take help of auto completions.
+Automatically code gets compiled and errors shown to developer.
+If there is no error compilation gets success and .class file creates automatically.
+We can generate some code like,
+System.out.println,
+main method and etc.
+We can easily run the code.
+
+We are using Eclipse IDE.
+
+Data types:
+-----------
+Data types used to create variables.
+Data type decides which type of data can be stored in the variable.
+
+There are 2 types Data types.
+1. Primitive data types
+2. Non-Primitive data types
+
+1. Primitive data types
+-----------------------
+Primitive data types are used to create normal variables.
+There are 8 different Primitive data types,
+1. byte
+2. short
+3. int
+4. long
+5. float
+6. double
+7. boolean
+8. char
+
+byte, short, int, long, float, double are number type variables, so that we can store numbers.
+
+1. byte: Primitive data type
+byte is a keyword and used to store signed integers from (-128 to +127)
+
+2. short: Primitive data type
+short is a keyword and used to store signed integers from (-32768 to +32767)
+
+3. int: Primitive data type
+int is a keyword and used to store signed integers from (-2 billion to +2 billion)
 
