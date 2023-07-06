@@ -27,6 +27,8 @@ Binary:
 4 - 1 0 0
 8 - 1 0 0 0
 
+1 1 1 1 1 1 1 1 - 255
+
 2 power 0
 2 power 1
 2 power 2
@@ -1634,12 +1636,12 @@ abstract:
 abstract is key word in Java and acts as a access modifier.
 by using abstract keyword we can create abstract methods and abstract classes.
 
-IDE: 
-----
+Eclipse IDE: 
+------------
 Full form Integrated development environment.
 
 We can project easily.
-We can create package organize code easily.
+We can create package to organize code easily.
 We can create classes faster with some code already placed.
 We can take help of auto suggestions.
 We can take help of auto completions.
@@ -1649,8 +1651,6 @@ We can generate some code like,
 System.out.println,
 main method and etc.
 We can easily run the code.
-
-We are using Eclipse IDE.
 
 Data types:
 -----------
@@ -1664,6 +1664,7 @@ There are 2 types Data types.
 1. Primitive data types
 -----------------------
 Primitive data types are used to create normal variables.
+All Primitive data types are coming from Java.
 There are 8 different Primitive data types,
 1. byte
 2. short
@@ -1674,14 +1675,109 @@ There are 8 different Primitive data types,
 7. boolean
 8. char
 
-byte, short, int, long, float, double are number type variables, so that we can store numbers.
+byte, short, int, long, float, double are number data types, so that we can store numbers.
 
 1. byte: Primitive data type
-byte is a keyword and used to store signed integers from (-128 to +127)
+byte is a keyword and used to store 8 bit signed integers from (-128 to +127).
+default value: 0 (Zero)
 
 2. short: Primitive data type
-short is a keyword and used to store signed integers from (-32768 to +32767)
+short is a keyword and used to create variables which can store 16 bit signed integers from (-32768 to +32767).
+default value: 0 (Zero)
 
 3. int: Primitive data type
-int is a keyword and used to store signed integers from (-2 billion to +2 billion)
+int is a keyword and used to create variables which can store 32 bit signed integers from (-2 billion to +2 billion).
+default value: 0 (Zero)
+
+4. long: Primitive data type
+long is a keyword and used to create variables which can store 64 bit signed integers from (more than int).
+default value: 0L (Zero)
+
+5. float: Primitive data type
+float is keyword and used to create variables which can store 32 bit signed floating point numbers.
+default value: 0.0f
+
+6. double: Primitive data type
+double is a keyword and used to create variables which can store 64 bit signed floating point numbers.
+default value: 0.0
+
+Boolean types:
+7. boolean: Primitive data type
+boolean is a keyword and used to create variables which can store boolean values (true, false)
+default value: false
+
+Character Types:
+8. char: Primitive data type
+char is a keyword and used to create variables which can store single Character.
+default value: null character ('\u0000')
+
+public class Numbers {
+
+	public byte byteVariable = 126;
+	public short shortVariable = -32765;
+	public int intVariable = 999999999;
+	public long longVariable = 99999999909546456L;
+	public float floatVariable = 45.7f;
+	public double doubleVariable = 99.77;
+
+	public boolean isActive = true;
+
+	public char male = 'M';
+
+	public void print() {
+		System.out.println("byteVariable: " + byteVariable);
+		System.out.println("shortVariable: " + shortVariable);
+		System.out.println("intVariable: " + intVariable);
+		System.out.println("longVariable: " + longVariable);
+		System.out.println("floatVariable: " + floatVariable);
+		System.out.println("doubleVariable: " + doubleVariable);
+		System.out.println("isActive: " + isActive);
+		System.out.println("male: " + male);
+	}	
+	public static void main(String[] args) {
+		Numbers numbers = new Numbers();
+		numbers.print();
+	}
+}
+
+There are 8 different Primitive data types,
+1. byte
+2. short
+3. int
+4. long
+5. float
+6. double
+7. boolean
+8. char
+
+In Java, Every Primitive data type has corresponding Wrapper class.
+Wrapper class:
+Wrapper class is a predefined class which represents Corresponding primitive data type in Object format.
+When we use Wrapper class, we can get additional functionality.
+Example: convert String number into byte value. 
+
+1. byte: Corresponding wrapper class for "byte" is "Byte" class. 
+2. short: Corresponding wrapper class for "short" is "Short" class.
+3. int: Corresponding wrapper class for "int" is "Integer" class.
+4. long: Corresponding wrapper class for "long" is "Long" class.
+5. float: Corresponding wrapper class for "float" is "Float" class.
+6. double: Corresponding wrapper class for "double" is "Double" class.
+7. boolean: Corresponding wrapper class for "boolean" is "Boolean" class.
+8. char: Corresponding wrapper class for "char" is "Character" class.
+
+2. Non-Primitive data types
+---------------------------
+Non-Primitive data type store Object Reference.
+Non-Primitive data types are Predefined classes of Java or User defined classes.
+if we create a Class, then that class is a User defined data type.
+Example: 
+String, Student, College, etc.
+
+
+
+
+
+
+
+
 
