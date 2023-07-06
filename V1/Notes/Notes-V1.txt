@@ -1770,6 +1770,7 @@ Example: convert String number into byte value.
 Non-Primitive data type store Object Reference.
 Non-Primitive data types are Predefined classes of Java or User defined classes.
 if we create a Class, then that class is a User defined data type.
+Default value for all Non-Primitive data type variables is null.
 Example: 
 String, Student, College, etc.
 
