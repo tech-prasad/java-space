@@ -1722,7 +1722,7 @@ public class Numbers {
 
 	public boolean isActive = true;
 
-	public char male = 'M';
+	public char gender = 'M';
 
 	public void print() {
 		System.out.println("byteVariable: " + byteVariable);
@@ -1732,7 +1732,7 @@ public class Numbers {
 		System.out.println("floatVariable: " + floatVariable);
 		System.out.println("doubleVariable: " + doubleVariable);
 		System.out.println("isActive: " + isActive);
-		System.out.println("male: " + male);
+		System.out.println("gender: " + gender);
 	}	
 	public static void main(String[] args) {
 		Numbers numbers = new Numbers();
@@ -1765,17 +1765,113 @@ Example: convert String number into byte value.
 7. boolean: Corresponding wrapper class for "boolean" is "Boolean" class.
 8. char: Corresponding wrapper class for "char" is "Character" class.
 
-2. Non-Primitive data types
+public class Numbers {
+
+	public Byte byteVariable = 126;
+	public Short shortVariable = -32765;
+	public Integer intVariable = 999999999;
+	public Long longVariable = 99999999909546456L;
+	public Float floatVariable = 45.7f;
+	public Double doubleVariable = 99.77;
+
+	public Boolean isActive = true;
+
+	public Character gender = 'M';
+
+	public void print() {
+		System.out.println("byteVariable: " + byteVariable);
+		System.out.println("shortVariable: " + shortVariable);
+		System.out.println("intVariable: " + intVariable);
+		System.out.println("longVariable: " + longVariable);
+		System.out.println("floatVariable: " + floatVariable);
+		System.out.println("doubleVariable: " + doubleVariable);
+		System.out.println("isActive: " + isActive);
+		System.out.println("gender: " + gender);
+	}
+
+	public static void main(String[] args) {
+		Numbers numbers = new Numbers();
+		numbers.print();
+	}
+}
+
+2. Non-Primitive data types (Reference type)
 ---------------------------
 Non-Primitive data type store Object Reference.
 Non-Primitive data types are Predefined classes of Java or User defined classes.
-if we create a Class, then that class is a User defined data type.
+If we create a Class, then that class is a User defined data type.
 Default value for all Non-Primitive data type variables is null.
 Example: 
 String, Student, College, etc.
 
+Type casting:
+-------------
+Type casting is the process of converting one data type into another data type.
 
+1. Primitive data type casting
+2. Non-Primitive data type casting
 
+1. Primitive data type casting
+------------------------------
+It is the process converting one primitive data type into another primitive data type.
+
+implicit type casting:
+If we type cast lower size data type to higher size data type then that is called implicit type casting. Java do this type casting automatically.
+	public void print() {
+		long value = intVariable;
+		
+		System.out.println(value);
+	}
+
+explicit type casting:
+If we type cast higher size data type to lower size data type then that is called explicit type casting.
+In explicit type type casting, Java will not do type casting automatically.
+Developer has to do type casting manually.
+	public void print() {
+		int value = (int)doubleVariable;
+		
+		System.out.println(value);
+	}
+
+2. Non-Primitive data type casting
+----------------------------------
+Converting one class object reference to another class object reference.
+
+Up-Casting:
+Child object reference placed in Parent reference variable.
+Java do Up-Casting automatically.
+
+	Parent reference = new Child();
+
+Down-Casting:
+Parent object reference placed in Child reference variable.
+Java will not do Down-Casting automatically.
+
+	Parent reference = new Child();
+	Child c = (Child)reference;
+In the above example, child object placed in parent reference and casting to child again, which is fine because parent is holding child object only and copied to child reference with down casting.
+
+	Parent reference = new Parent();
+	Child c = (Child)reference;
+In the above example, parent object placed in parent reference and casting to child which is not fine because parent is holding parent object which we can not copied to child reference.
+If we do that by down casting, compiler will allow but at runtime we will get ClassCastException error.
+
+Java naming conventions:
+Convention: Way of doing/giving information so that everyone understand and it makes it more readable.
+Class naming convention:
+------------------------
+Every Class name should be meaningful which represents the data, functionality.
+Every Class name should follow Camel case and First letter should be Uppercase.
+There are no spaces allowed and no special characters allowed.
+Example:
+	Student
+	StudentManagementSystem
+
+Variable naming convention:
+---------------------------	
+Every Variable name should be meaningful which represents the data.
+Every Variable name should follow Camel case and First letter should be Lowercase.
+Example:	
 
 
 
