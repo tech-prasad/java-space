@@ -1818,6 +1818,7 @@ It is the process converting one primitive data type into another primitive data
 implicit type casting:
 If we type cast lower size data type to higher size data type then that is called implicit type casting. Java do this type casting automatically.
 	public void print() {
+		int intVariable = 8;
 		long value = intVariable;
 		
 		System.out.println(value);
@@ -1828,17 +1829,19 @@ If we type cast higher size data type to lower size data type then that is calle
 In explicit type type casting, Java will not do type casting automatically.
 Developer has to do type casting manually.
 	public void print() {
+		double doubleVariable = 9.8;
 		int value = (int)doubleVariable;
 		
 		System.out.println(value);
 	}
+There is a chance of data loss.	
 
 2. Non-Primitive data type casting
 ----------------------------------
 Converting one class object reference to another class object reference.
 
 Up-Casting:
-Child object reference placed in Parent reference variable.
+Child object placed in Parent reference variable.
 Java do Up-Casting automatically.
 
 	Parent reference = new Child();
@@ -1857,9 +1860,10 @@ In the above example, parent object placed in parent reference and casting to ch
 If we do that by down casting, compiler will allow but at runtime we will get ClassCastException error.
 
 Java naming conventions:
-Convention: Way of doing/giving information so that everyone understand and it makes it more readable.
-Class naming convention:
-------------------------
+Convention: Best practice, so that everyone understand and it makes it more readable.
+
+Class/Interface naming convention:
+----------------------------------
 Every Class name should be meaningful which represents the data, functionality.
 Every Class name should follow Camel case and First letter should be Uppercase.
 There are no spaces allowed and no special characters allowed.
@@ -1867,14 +1871,212 @@ Example:
 	Student
 	StudentManagementSystem
 
+Class and Interface naming convention is same.
+
 Variable naming convention:
----------------------------	
+---------------------------
 Every Variable name should be meaningful which represents the data.
 Every Variable name should follow Camel case and First letter should be Lowercase.
-Example:	
+Example: 
+	rollNumber
+	studentName
+	age
 
+Method naming convention:
+-------------------------
+Every method name should be meaning full which represents functionality.
+Every method name should follow Camel case and First letter should be Lowercase.
+Example:
+	main()
+	printStudentAddress()
 
+Constant naming convention:
+---------------------------
+Every constant name should be meaningful which represents the data.
+Every constant name should be Uppercase and Each word should separated with Underscore(_).
+Example:
+    COLLEGE_NAME
 
+Boolean variable naming convention:
+-----------------------------------
+Every Boolean Variable name should be meaningful which represents the data.
+Every Boolean Variable name should follow Camel case and First letter should be Lowercase.
+We have to use question type name.
+Example:
+	isAcvtive
+	hasPermission
+	
+Package naming convention:
+--------------------------
+Package name should be in lower case.
+Each word separated with dot(.).
+
+Convention:
+project
+ -> com
+	-> companydomain
+		-> projectname
+			-> modulename
+			
+Example:
+	com.icicibank.netbank.payments
+	
+	
+Accessor methods:
+Accessor methods are the methods which are used to access data members of the class.
+All the data members we declare as private and use them with Accessor methods.
+Two types of Accessor methods:
+set Accessor methods, also called as setters,
+get Accessor methods, also called as getters.
+Data members should be private and corresponding Accessor methods should be public.
+We use setters to assign the values and getters to get the values.
+We can assign and get values multiple times with setters and getters.
+syntax:
+	setVariableName - (setName(String name))
+	getVariableName - (getName())
+
+public class College {
+	private String name;
+	private String type;
+	private Address collegeAddress;
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setCollegeAddress(Address collegeAddress) {
+		this.collegeAddress = collegeAddress;
+	}
+	public Address getCollegeAddress() {
+		return collegeAddress;
+	}
+}
+
+Operators and Expressions:
+1. Arithmetic operators
+2. Assignment operators
+3. Comparison/Conditional operators
+4. Logical operators
+5. Ternary operator
+6. instance-of operator
+7. Method invocation operator
+8. Bitwise operators
+
+1. Arithmetic operators
+-----------------------
+Arithmetic operators used to perform calculations.
+
+a. Addition (+)
+b. Subtraction (-)
+c. Multiplication (*)
+d. Division (/)
+e. Module (Reminder) (%)
+f. Increment (++)
+g. decrement (--)
+
+a. Addition (+):
+----------------
+to perform Addition, we need at least two variables (operands).
+
+Syntax: 
+operand1 + operand2
+operand1 + operand2 + operand3
+
+Example:
+a + b
+1 + 5
+a + b + c
+a + 7
+a + 7 + d
+
+b. Subtraction (-):
+-------------------
+to perform Subtraction, we need at least two variables (operands).
+
+Syntax: 
+operand1 - operand2
+operand1 - operand2 - operand3
+
+Example:
+a - b
+1 - 5
+a - b - c
+a - 7
+a - 7 - d
+
+c. Multiplication (*):
+----------------------
+to perform Multiplication, we need at least two variables (operands).
+
+Syntax: 
+operand1 * operand2
+operand1 * operand2 * operand3
+
+Example:
+a * b
+1 * 5
+a * b * c
+a * 7
+a * 7 * d
+
+d. Division (/):
+----------------
+to perform Division, we need two variables (operands).
+
+Syntax: 
+operand1 / operand2
+
+Example:
+a / b
+1 / 5
+a / 7
+
+e. Module (Reminder) (%):
+to perform Module (Reminder), we need two variables (operands).
+
+Syntax: 
+operand1 % operand2
+
+Example:
+a % b
+1 % 5
+a % 7
+
+f. Increment (++)
+-----------------
+to perform Increment, we need single variable (operand).
+
+it is a shorthand of addition of adding 1.
+
+Syntax:
+Variable++
+
+Example:
+number = 10
+number++ (number = number + 1)
+++number (number = number + 1)
+
+g. Decrement (--)
+-----------------
+to perform Decrement, we need single variable (operand).
+
+it is a shorthand of Subtraction to reduce value by 1.
+
+Syntax:
+Variable--
+
+Example:
+number = 10
+number-- (number = number - 1)
+--number (number = number - 1)
 
 
 
