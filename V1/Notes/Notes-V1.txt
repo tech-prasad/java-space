@@ -1860,6 +1860,7 @@ In the above example, parent object placed in parent reference and casting to ch
 If we do that by down casting, compiler will allow but at runtime we will get ClassCastException error.
 
 Java naming conventions:
+------------------------
 Convention: Best practice, so that everyone understand and it makes it more readable.
 
 Class/Interface naming convention:
@@ -1921,8 +1922,8 @@ project
 Example:
 	com.icicibank.netbank.payments
 	
-	
 Accessor methods:
+-----------------
 Accessor methods are the methods which are used to access data members of the class.
 All the data members we declare as private and use them with Accessor methods.
 Two types of Accessor methods:
@@ -1966,14 +1967,15 @@ Operators and Expressions:
 3. Comparison/Conditional operators
 4. Logical operators
 5. Ternary operator
-6. instance-of operator
+6. instanceof operator
 7. Method invocation operator
-8. Bitwise operators
+8. Concatenating operator
+9. Bitwise operators
 
 1. Arithmetic operators
 -----------------------
-Arithmetic operators used to perform calculations.
-
+Arithmetic operators used to perform Arithmetic calculations on numbers.
+Outcome: Numbers
 a. Addition (+)
 b. Subtraction (-)
 c. Multiplication (*)
@@ -2029,10 +2031,10 @@ a * 7 * d
 
 d. Division (/):
 ----------------
-to perform Division, we need two variables (operands).
+to perform Division, we need at least two variables (operands).
 
 Syntax: 
-operand1 / operand2
+operand1 / operand2 / operand3
 
 Example:
 a / b
@@ -2040,10 +2042,10 @@ a / b
 a / 7
 
 e. Module (Reminder) (%):
-to perform Module (Reminder), we need two variables (operands).
+to perform Module (Reminder), we need at least two variables (operands).
 
 Syntax: 
-operand1 % operand2
+operand1 % operand2 % operand3
 
 Example:
 a % b
@@ -2058,11 +2060,12 @@ it is a shorthand of addition of adding 1.
 
 Syntax:
 Variable++
+++Variable
 
 Example:
 number = 10
-number++ (number = number + 1)
-++number (number = number + 1)
+number++ (number = number + 1) - Post increment
+++number (number = number + 1) - Pre increment
 
 g. Decrement (--)
 -----------------
@@ -2072,11 +2075,228 @@ it is a shorthand of Subtraction to reduce value by 1.
 
 Syntax:
 Variable--
+--Variable
 
 Example:
 number = 10
 number-- (number = number - 1)
 --number (number = number - 1)
 
+Example code:
+package com.operators.arithmetic;
 
+public class ArithmeticOperators {
 
+	public static void main(String[] args) {
+
+		int a = 3;
+		int b = 5;
+		int c = 8;
+
+		int add = a + b + c + 99;
+
+		System.out.println("Add: " + add);
+
+		int sub = a - b - c - 67;
+
+		System.out.println("Sub: " + sub);
+
+		int mul = a * b * c * 2;
+
+		System.out.println("Mul: " + mul);
+
+		int div = 2000 / a / b / c;
+
+		System.out.println("Div: " + div);
+
+		int percent = 2000 % a % b % c;
+
+		System.out.println("Percent: " + percent);
+
+		int x = 10;
+
+		System.out.println("X: " + x);
+
+		int z = x++;
+
+		System.out.println("Z: " + z);
+		System.out.println("X: " + x);
+
+		int i = 7;
+
+		System.out.println("I: " + i);
+
+		int k = ++i;
+
+		System.out.println("K: " + k);
+		System.out.println("I: " + i);
+
+		int p = 6;
+
+		System.out.println("P: " + p);
+
+		++p;
+
+		System.out.println("P: " + p);
+
+		int n = 9;
+
+		System.out.println("N: " + n);
+
+		int q = n--;
+
+		System.out.println("Q: " + q);
+		System.out.println("N: " + n);
+
+		int u = 4;
+
+		System.out.println("U: " + u);
+
+		int v = --u;
+
+		System.out.println("V: " + v);
+		System.out.println("U: " + u);
+
+		int h = 8;
+
+		System.out.println("H: " + h);
+
+		System.out.println("H: " + --h);
+	}
+}
+
+2. Assignment operators
+-----------------------
+Assignment operators are used to assign the values.
+
+a. = (Outcome depends on what value we keep in it)
+b. += (Numbers)
+c. -= (Numbers)
+d. *= (Numbers)
+e. /= (Numbers)
+f. %= (Numbers)
+
+Example code:
+package com.operators.assignment;
+
+public class AssignmentOperators {
+	public static void main(String[] args) {
+
+		String value = "Working fine";
+
+		int a = 8;
+
+		System.out.println("a: " + a);
+
+		int b = 3;
+
+		b += a; // b = b + a;
+
+		System.out.println("a: " + a);
+		System.out.println("b: " + b);
+
+		int c = 5;
+
+		c -= a; // c = c - a;
+
+		System.out.println("a: " + a);
+		System.out.println("c: " + c);
+
+		int d = 4;
+
+		d *= a; // d = d * a;
+
+		System.out.println("a: " + a);
+		System.out.println("d: " + d);
+
+		int e = 16;
+
+		e /= a; // e = e / a;
+
+		System.out.println("a: " + a);
+		System.out.println("e: " + e);
+
+		int f = 67;
+
+		f %= a; // f = f % a;
+
+		System.out.println("a: " + a);
+		System.out.println("f: " + f);
+	}
+}
+
+3. Comparison/Conditional operators
+-----------------------------------
+Comparison/Conditional operators are used to compare 2 different numbers values.
+Outcome: true or false
+
+a. == (equal)
+used to find the equality of 2 operands, return true if the 2 operands are equal.
+
+b. != (not equal)
+used to find the in-equality of 2 operands, return true if the 2 operands are not equal.
+
+c. > (greater than)
+used to find the greater than of 2 operands, return true if the operand1 is greater than operand2.
+
+d. >= (greater than or equal)
+used to find the greater than or equal of 2 operands, return true if the operand1 is greater than or equal to operand2.
+
+e. < (less than)
+used to find the less than of 2 operands, return true if the operand1 is less than operand2.
+
+f. <= (less than or equal)
+used to find the less than or equal of 2 operands, return true if the operand1 is less than or equal to operand2.
+
+Example code:
+package com.operators.comparison;
+
+public class ComparisonOperators {
+	public static void main(String[] args) {
+
+		boolean a = 5 == 5;
+		System.out.println("a: " + a);
+
+		boolean b = 7 == 5;
+		System.out.println("b: " + b);
+
+		boolean c = 5 != 5;
+		System.out.println("c: " + c);
+
+		boolean d = 7 != 5;
+		System.out.println("d: " + d);
+
+		boolean e = 5 > 5;
+		System.out.println("e: " + e);
+
+		boolean f = 7 > 5;
+		System.out.println("f: " + f);
+
+		boolean g = 5 >= 5;
+		System.out.println("g: " + g);
+
+		boolean h = 7 >= 5;
+		System.out.println("h: " + h);
+
+		boolean i = 4 >= 5;
+		System.out.println("i: " + i);
+
+		boolean j = 5 < 5;
+		System.out.println("j: " + j);
+
+		boolean k = 4 < 5;
+		System.out.println("k: " + k);
+
+		boolean m = 7 < 5;
+		System.out.println("m: " + m);
+
+		boolean n = 5 <= 5;
+		System.out.println("n: " + n);
+
+		boolean p = 7 <= 5;
+		System.out.println("p: " + p);
+
+		boolean q = 4 <= 5;
+		System.out.println("q: " + q);
+	}
+}
