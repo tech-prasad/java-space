@@ -78,6 +78,8 @@ public class ArithmeticOperators {
 
 		System.out.println("H: " + --h);
 
+		int y = a + b - c + 1 * 2 / 2;
+		System.out.println("Y: " + y);
 	}
 
 }

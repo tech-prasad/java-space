@@ -3,7 +3,9 @@ package com.operators.comparison;
 public class ComparisonOperators {
 	public static void main(String[] args) {
 
-		boolean a = 5 == 5;
+		int x = 5;
+
+		boolean a = x == 5;
 		System.out.println("a: " + a);
 
 		boolean b = 7 == 5;

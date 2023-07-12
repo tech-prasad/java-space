@@ -1961,6 +1961,8 @@ public class College {
 	}
 }
 
+11-JULY-2023
+------------
 Operators and Expressions:
 1. Arithmetic operators
 2. Assignment operators
@@ -1971,6 +1973,8 @@ Operators and Expressions:
 7. Method invocation operator
 8. Concatenating operator
 9. Bitwise operators
+
+Expression: It is a combination of Operators and Operands.
 
 1. Arithmetic operators
 -----------------------
@@ -2227,7 +2231,7 @@ public class AssignmentOperators {
 
 3. Comparison/Conditional operators
 -----------------------------------
-Comparison/Conditional operators are used to compare 2 different numbers values.
+Comparison/Conditional operators are used to compare 2 different values.
 Outcome: true or false
 
 a. == (equal)
@@ -2254,7 +2258,9 @@ package com.operators.comparison;
 public class ComparisonOperators {
 	public static void main(String[] args) {
 
-		boolean a = 5 == 5;
+		int x = 5;
+
+		boolean a = x == 5;
 		System.out.println("a: " + a);
 
 		boolean b = 7 == 5;
@@ -2298,5 +2304,177 @@ public class ComparisonOperators {
 
 		boolean q = 4 <= 5;
 		System.out.println("q: " + q);
+	}
+}
+
+12-JULY-2023
+------------
+4. Logical operators
+--------------------
+Used to perform logical operations on Boolean input.
+Input: true or false
+Outcome: true or false
+
+a. AND (&&)
+b. OR (||)
+c. NOT (!)
+
+Example code:
+package com.operators.logical;
+
+public class LogicalOperators {
+	public static void main(String[] args) {
+
+		boolean a = false;
+		boolean b = true;
+
+		boolean e = a && a;
+		boolean f = a && b;
+		boolean g = b && a;
+		boolean h = b && b;
+
+		System.out.println("AND Example:");
+		System.out.println(a + " " + a + " " + e);
+		System.out.println(a + " " + b + " " + f);
+		System.out.println(b + " " + a + " " + g);
+		System.out.println(b + " " + b + " " + h);
+
+		boolean i = a || a;
+		boolean j = a || b;
+		boolean k = b || a;
+		boolean m = b || b;
+
+		System.out.println();
+		System.out.println("OR Example:");
+		System.out.println(a + " " + a + " " + i);
+		System.out.println(a + " " + b + " " + j);
+		System.out.println(b + " " + a + " " + k);
+		System.out.println(b + " " + b + " " + m);
+
+		boolean n = !a;
+		boolean p = !b;
+
+		System.out.println();
+		System.out.println("NOT Example:");
+		System.out.println(a + " " + n);
+		System.out.println(b + " " + p);
+
+		System.out.println();
+		boolean q = 1 == 7;
+		boolean r = 7 == 7;
+
+		boolean s = r || q;
+		System.out.println("s: " + s);
+
+		boolean t = q && r;
+		System.out.println("t: " + t);
+
+		boolean u = 5 > 3 && r;
+		System.out.println("u: " + u);
+
+		boolean v = 5 < 6 && 7 > 6;
+		System.out.println("v: " + v);
+
+		boolean w = 8 < 9 || 4 > 3;
+		System.out.println("w: " + w);
+
+		boolean x = !(6 > 7);
+		System.out.println("x: " + x);
+
+		boolean y = (3 > 5 && 5 < 4) || 7 > 5;
+		System.out.println("y: " + y);
+
+		boolean z = 3 > 5 && (5 < 4 || 7 > 5);
+		System.out.println("z: " + z);
+
+		boolean ab = !(3 > 5 && (5 < 4 || 7 > 5));
+		System.out.println("ab: " + ab);
+
+	}
+}
+
+5. Ternary operator (?:)
+------------------------
+
+input: true or false
+Outcome: Anything
+Example:
+package com.operators.ternary;
+
+public class TernaryOperator {
+	public static void main(String[] args) {
+
+		int a = 10;
+		int b = 20;
+
+		boolean c = a > b;
+
+		int d = c ? 123 : 345;
+
+		System.out.println("d: " + d);
+
+		int e = 45 > 44 ? 123 : 345;
+
+		System.out.println("e: " + e);
+
+		int f = c && (45 > 44) ? 123 : 345;
+
+		System.out.println("f: " + f);
+		
+		int g = !(!c && (45 > 44)) ? 123 : 345;
+
+		System.out.println("g: " + g);
+		
+		String t = c ? "Apple" : "Google";
+
+		System.out.println("t: " + t);
+		
+		String v = !c ? "Apple" : "Google";
+
+		System.out.println("v: " + v);
+	}
+}
+
+6. instanceof operator
+----------------------
+it is used compare the reference variable against a Class.
+return true, if the reference is referring the given class object or child class object.
+Out come: true or false
+
+package com.operators.ternary.instance.of;
+
+class Parent {
+	int a = 10;
+
+	public void print() {
+		System.out.println("Parent a: " + a);
+	}
+}
+class Child extends Parent {
+
+	public void print() {
+		System.out.println("Child a: " + a);
+	}
+}
+public class InstanceofOperator {
+	public static void main(String[] args) {
+
+		Parent p = new Child();
+
+		p.print();
+
+		boolean x = p instanceof Child;
+
+		System.out.println("x: " + x);
+
+		boolean y = p instanceof Parent;
+
+		System.out.println("y: " + y);
+
+		Parent p2 = null;
+
+		boolean z = p2 instanceof Parent;
+
+		System.out.println("z: " + z);
 	}
 }
