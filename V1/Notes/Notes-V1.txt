@@ -1858,6 +1858,7 @@ In the above example, child object placed in parent reference and casting to chi
 	Child c = (Child)reference;
 In the above example, parent object placed in parent reference and casting to child which is not fine because parent is holding parent object which we can not copied to child reference.
 If we do that by down casting, compiler will allow but at runtime we will get ClassCastException error.
+If classes are not related then also Type cast results in ClassCastException error.
 
 Java naming conventions:
 ------------------------
@@ -2315,9 +2316,9 @@ Used to perform logical operations on Boolean input.
 Input: true or false
 Outcome: true or false
 
-a. AND (&&)
-b. OR (||)
-c. NOT (!)
+a. AND: &&
+b. OR: ||
+c. NOT: !
 
 Example code:
 package com.operators.logical;
@@ -2389,7 +2390,6 @@ public class LogicalOperators {
 
 		boolean ab = !(3 > 5 && (5 < 4 || 7 > 5));
 		System.out.println("ab: " + ab);
-
 	}
 }
 
@@ -2437,44 +2437,88 @@ public class TernaryOperator {
 
 6. instanceof operator
 ----------------------
-it is used compare the reference variable against a Class.
+it is used compare the reference variable against a Object of a Class.
 return true, if the reference is referring the given class object or child class object.
-Out come: true or false
+Outcome: true or false
+Example code:
+package com.operators.instance.of;
 
-package com.operators.ternary.instance.of;
-
-class Parent {
-	int a = 10;
-
-	public void print() {
-		System.out.println("Parent a: " + a);
+interface Car {
+	void driveCar();
+	void soundHorn();
+}
+abstract class KiaCar implements Car {
+	public void driveCar() {
+		System.out.println("Driving Kia Car");
 	}
 }
-class Child extends Parent {
-
-	public void print() {
-		System.out.println("Child a: " + a);
+class KiaXCar extends KiaCar {
+	public void soundHorn() {
+		System.out.println("Sound horn Kia X Car");
 	}
 }
-public class InstanceofOperator {
+class kiaYCar extends KiaCar {
+	public void soundHorn() {
+		System.out.println("Sound horn Kia Y Car");
+	}
+	public void openRoofTop() {
+		System.out.println("Open roof of Kia Y Car");
+	}
+}
+public class VehicleSystem {	
+	public void useCar(Car c) {
+		c.driveCar();
+		c.soundHorn();
+
+		if (c instanceof kiaYCar) {
+			kiaYCar yCar = (kiaYCar) c;
+			yCar.openRoofTop();
+		}
+	}	
 	public static void main(String[] args) {
+		VehicleSystem v = new VehicleSystem();
 
-		Parent p = new Child();
+		KiaXCar xCar = new KiaXCar();
 
-		p.print();
+		v.useCar(xCar);
+		
+		kiaYCar yCar = new kiaYCar();
 
-		boolean x = p instanceof Child;
-
-		System.out.println("x: " + x);
-
-		boolean y = p instanceof Parent;
-
-		System.out.println("y: " + y);
-
-		Parent p2 = null;
-
-		boolean z = p2 instanceof Parent;
-
-		System.out.println("z: " + z);
+		v.useCar(yCar);			
 	}
 }
+
+7. Method invocation operator
+-----------------------------
+dot (.) is method invocation operator.
+
+Student s = new Student();
+s.getStudentName(); // here dot(.) used to call method of student class
+
+8. Concatenating operator
+-------------------------
++ is a Concatenating operator.
+Concatenation: Combining two or more together.
+
+Example code:
+package com.operators.concatenation;
+
+public class ConcatenationOperator {
+	public static void main(String[] args) {
+		String x = "ABC";
+		String y = "DEF";
+		String z = x + y + "PQR"; // ABCDEFPQR
+
+		System.out.println(z);
+
+		String i = x + 7 + "IJK" + 4; // ABC7IJK4
+
+		System.out.println(i);
+
+		String u = y + (6 + 7) + "UVW" + 6 + (8 + 9); // DEF13UVW6
+
+		System.out.println(u);
+	}
+}
+
+

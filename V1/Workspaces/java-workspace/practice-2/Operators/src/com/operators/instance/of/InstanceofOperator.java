@@ -1,4 +1,4 @@
-package com.operators.ternary.instance.of;
+package com.operators.instance.of;
 
 class Parent {
 	int a = 10;
