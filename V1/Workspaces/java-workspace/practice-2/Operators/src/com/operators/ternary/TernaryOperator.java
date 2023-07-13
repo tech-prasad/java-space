@@ -20,18 +20,24 @@ public class TernaryOperator {
 		int f = c && (45 > 44) ? 123 : 345;
 
 		System.out.println("f: " + f);
-		
+
 		int g = !(!c && (45 > 44)) ? 123 : 345;
 
 		System.out.println("g: " + g);
-		
+
 		String t = c ? "Apple" : "Google";
 
 		System.out.println("t: " + t);
-		
+
 		String v = !c ? "Apple" : "Google";
 
 		System.out.println("v: " + v);
+
+		int number = 8;
+
+		int x = (number % 2) == 0 ? 1234 : 6789;
+
+		System.out.println(x);
 
 	}
 
