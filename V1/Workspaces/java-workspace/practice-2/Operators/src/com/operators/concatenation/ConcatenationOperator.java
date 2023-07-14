@@ -12,7 +12,7 @@ public class ConcatenationOperator {
 
 		System.out.println(i);
 
-		String u = y + (6 + 7) + "UVW" + 6 + (8 + 9); // DEF13UVW6
+		String u = y + (6 + 7) + "UVW" + 6 + (8 + 9); // DEF13UVW617
 
 		System.out.println(u);
 	}

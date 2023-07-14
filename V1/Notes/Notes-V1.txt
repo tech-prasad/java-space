@@ -1975,6 +1975,8 @@ Operators and Expressions:
 8. Concatenating operator
 9. Bitwise operators
 
+Operator: Operator is a Symbol or Special Character which Performs Specific Operation.
+Operand: Operand is a Variable or a Constant on which Operator can Perform Operation.
 Expression: It is a combination of Operators and Operands.
 
 1. Arithmetic operators
@@ -2490,15 +2492,16 @@ public class VehicleSystem {
 
 7. Method invocation operator
 -----------------------------
-dot (.) is method invocation operator.
+dot (.) is method invocation operator
 
 Student s = new Student();
 s.getStudentName(); // here dot(.) used to call method of student class
+s.age // here dot(.) used to use variable of student class
 
 8. Concatenating operator
 -------------------------
 + is a Concatenating operator.
-Concatenation: Combining two or more together.
+Concatenation: Combining two or more data together.
 
 Example code:
 package com.operators.concatenation;
@@ -2515,10 +2518,235 @@ public class ConcatenationOperator {
 
 		System.out.println(i);
 
-		String u = y + (6 + 7) + "UVW" + 6 + (8 + 9); // DEF13UVW6
+		String u = y + (6 + 7) + "UVW" + 6 + (8 + 9); // DEF13UVW617
 
 		System.out.println(u);
 	}
 }
+
+9. Bitwise operators
+--------------------
+Bitwise operators perform operation on numbers in the form bits.
+
+a. Bitwise AND: &
+b. Bitwise OR: |
+c. Bitwise XOR: ^
+d. Bitwise NOT: ~ (Complement)
+e. Left Shift: <<
+f. Right Shift: >>
+g. Unsigned Right Shift: >>>
+
+a. Bitwise AND: &
+-----------------
+5 & 3
+5 = 0101
+3 = 0011
+1 = 0001
+
+5 & 3 = 1
+
+b. Bitwise OR: |
+----------------
+5 | 3
+5 = 0101
+3 = 0011
+7 = 0111
+
+5 | 3 = 7
+
+c. Bitwise XOR: ^
+-----------------
+5 ^ 3
+5 = 0101
+3 = 0011
+6  = 0110
+
+5 ^ 3 = 6
+
+d. Bitwise NOT: ~ (Complement)
+------------------------------
+~1
+1 =  001
+-2 = 110
+
+e. Left Shift: <<
+-----------------
+5 << 2
+5 = 00000000000000000000000000000101
+5 << 2 = 00000000000000000000000000010100
+5 << 2 = 20
+
+f. Right Shift: >>
+------------------
+-20 >> 2
+-20 = 10000000000000000000000000010100
+-20 >> 2 = 10000000000000000000000000000101
+-20 >> 2 = -5
+
+g. Unsigned Right Shift: >>>
+----------------------------
+-4 >>> 2
+4 = 00100000000000000000000000000001
+
+Example code:
+-------------
+package com.operators.bitwise;
+
+public class BitwiseOperators {
+	public static void main(String[] args) {
+
+		int a = 5;
+		int b = 3;
+
+		int c = a & b;
+		System.out.println("& c: " + c);
+
+		int d = a | b;
+		System.out.println("| d: " + d);
+
+		int f = a ^ b;
+		System.out.println("^ f: " + f);
+
+		int e = ~1;
+		System.out.println("~ e: " + e);
+
+		int g = 5 << 2;
+		System.out.println("<< g: " + g);
+
+		int h = -20 >> 2;
+		System.out.println(">> h: " + h);
+
+		int i = -4 >>> 2;
+		System.out.println(">>> i: " + i);
+	}
+}
+
+Control Structures:
+Conditional Structures:
+-----------------------
+Used to control the flow of execution.
+All the Control Structures work based on boolean (true or false) based conditions.
+
+a. if
+b. if-else
+c. if-else if-else
+4. switch
+5. for
+6. while
+7. do-while
+
+a. if
+-----
+"if" is used to control the single flow of execution.
+only if block execute when condition is true.
+false do nothing
+
+Syntax: 
+if(condition){
+	// Instructions
+}
+
+Example code:
+package com.control.structures;
+
+public class SchoolBell {
+	public void ringBell() {
+		System.out.println("Ring the bell");
+	}
+	public static void main(String[] args) {
+		SchoolBell bell = new SchoolBell();
+
+		int time = 5;
+
+		if (time == 4) {
+			bell.ringBell();
+		}
+	}
+}
+
+b. if-else
+----------
+"if-else" is used to control the flow of execution.
+condition true: execute if block
+condition false: execute else block
+
+Syntax: 
+if(condition){
+	// Instructions
+} else {
+	// Instructions
+}
+
+Example code:
+package com.control.structuresifelse;
+
+public class ATM {
+	public static void main(String[] args) {
+
+		int accountBalance = 500;
+
+		int wantToWithdraw = 500;
+
+		if (wantToWithdraw <= accountBalance) {
+			System.out.println("Withdraw success for amount: " + wantToWithdraw);
+		} else {
+			System.err.println("Withdraw failed for amount (Insufficient Balance): " + wantToWithdraw);
+		}
+	}
+}
+
+
+Assignment:
+Address - properties - Accessor methods
+College - properties - Accessor methods
+Library - properties - Accessor methods
+Student - properties - Accessor methods
+Student add marks, add getTotalMarks(), getAvarage(), isPassed()
+
+StudentManagementSystem
+Address collegeAddress = new Address()
+collegeAddress.setHouseNumber(1);
+
+College college = new College();
+college.setName("CBIT");
+college.setType("BTECH");
+college.setCollegeAddress(collegeAddress);
+
+Address libraryAddress = new Address()
+libraryAddress.setHouseNumber(1);
+
+Library library = new Library();
+library.set()
+library.setLibraryAddress(libraryAddress);
+
+Output:
+Student details
+123
+Anil
+23
+flatNo: 5-456, city: MUMBAI, state: MH, country: INDIA
+College details
+CBIT
+BTECH
+flatNo: 1-77, city: HYD, state: TS, country: INDIA
+Library details
+Abcus
+flatNo: 1-78, city: HYD, state: TS, country: INDIA
+
+Result:
+Print all marks: 
+Print total marks:
+Print average:
+Print Passed/Failed
+
+
+
+
+
+
+
+
+
+
 
 
