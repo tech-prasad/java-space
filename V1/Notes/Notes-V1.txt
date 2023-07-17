@@ -905,6 +905,7 @@ this() - used to call zero parameterized constructor of the same class from anot
 this(parameters) - used to call parameterized constructor of the same class from another constructor
 this keyword used to access the instance variables of the same class
 this keyword used to access the instance methods of same class
+this refers to current object.
 
 Both super and this can not be used at same in constructor.
 Both super and this used to deal with only constructors, instance variables and instance methods
@@ -2621,81 +2622,6 @@ public class BitwiseOperators {
 	}
 }
 
-Control Structures:
-Conditional Structures:
------------------------
-Used to control the flow of execution.
-All the Control Structures work based on boolean (true or false) based conditions.
-
-a. if
-b. if-else
-c. if-else if-else
-4. switch
-5. for
-6. while
-7. do-while
-
-a. if
------
-"if" is used to control the single flow of execution.
-only if block execute when condition is true.
-false do nothing
-
-Syntax: 
-if(condition){
-	// Instructions
-}
-
-Example code:
-package com.control.structures;
-
-public class SchoolBell {
-	public void ringBell() {
-		System.out.println("Ring the bell");
-	}
-	public static void main(String[] args) {
-		SchoolBell bell = new SchoolBell();
-
-		int time = 5;
-
-		if (time == 4) {
-			bell.ringBell();
-		}
-	}
-}
-
-b. if-else
-----------
-"if-else" is used to control the flow of execution.
-condition true: execute if block
-condition false: execute else block
-
-Syntax: 
-if(condition){
-	// Instructions
-} else {
-	// Instructions
-}
-
-Example code:
-package com.control.structuresifelse;
-
-public class ATM {
-	public static void main(String[] args) {
-
-		int accountBalance = 500;
-
-		int wantToWithdraw = 500;
-
-		if (wantToWithdraw <= accountBalance) {
-			System.out.println("Withdraw success for amount: " + wantToWithdraw);
-		} else {
-			System.err.println("Withdraw failed for amount (Insufficient Balance): " + wantToWithdraw);
-		}
-	}
-}
-
-
 Assignment:
 Address - properties - Accessor methods
 College - properties - Accessor methods
@@ -2739,7 +2665,179 @@ Print total marks:
 Print average:
 Print Passed/Failed
 
+Control Structures:
+Conditional Structures:
+-----------------------
+Used to control the flow of execution.
+All the Control Structures work based on boolean (true or false) based conditions.
 
+a. if
+b. if-else
+c. if - else if
+d. switch
+e. for
+f. while
+g. do-while
+
+a. if condition
+---------------
+"if" condition is used to control the single flow of execution.
+only if block execute when condition is true.
+false do nothing
+
+Syntax: 
+if(condition){
+	// Instructions
+}
+
+Example code:
+package com.control.structures;
+
+public class SchoolBell {
+	public void ringBell() {
+		System.out.println("Ring the bell");
+	}
+	public static void main(String[] args) {
+		SchoolBell bell = new SchoolBell();
+
+		int time = 4;
+
+		if (time == 4) {
+			bell.ringBell();
+		}
+	}
+}
+
+b. if-else condition
+--------------------
+"if-else" condition is used to control the flow of execution of two blocks.
+condition true: execute if block
+condition false: execute else block
+
+Syntax: 
+if(condition){
+	// Instructions
+} else {
+	// Instructions
+}
+
+Example code:
+package com.control.structuresifelse;
+
+public class ATM {
+	public static void main(String[] args) {
+
+		int accountBalance = 500;
+
+		int wantToWithdraw = 500;
+
+		if (wantToWithdraw <= accountBalance) {
+			System.out.println("Withdraw success for amount: " + wantToWithdraw);
+		} else {
+			System.err.println("Withdraw failed for amount (Insufficient Balance): " + wantToWithdraw);
+		}
+	}
+}
+
+c. if - elseif condition:
+---------------------------------
+"if - else if" condition is used to control flow of execution of multiple blocks.
+
+Syntax: 
+if(condition) {
+	//instructions
+} else if(condition){
+	//instructions
+} else if(condition){
+	//instructions
+} else {
+	//instructions
+}
+
+Example code:
+package com.control.structuresifelseif;
+
+public class NumberSystem {
+	public static void main(String[] args) {
+
+		int number = 0;
+
+		if (number > 0) {
+			System.out.println("Given number is Positive: " + number);
+		} else if (number < 0) {
+			System.out.println("Given number is Negative: " + number);
+		} else {
+			System.out.println("Given number is Zero");
+		}
+	}
+}
+
+d. switch
+---------
+Used to control the flow of execution of multiple blocks.
+case: it is a label which matched switch value.
+break: it used to stop executing further case statement instruction.
+default: if non of case matched then default case will be executed and default should be the last case.
+
+allowed data types: int, byte, short, char, Integer, Byte, Short, Character, String.
+
+syntax:
+switch(variable) {
+	case label-1: 
+	//instructions
+	break; // End of: case label-1
+	case label-2: 
+	//instructions
+	break;
+	...
+	default:
+	//instructions
+}
+Example code:
+package com.control.switchex;
+
+public class NumberSystem {
+	public static void main(String[] args) {
+
+		int number = 1;
+
+		switch (number) {
+		case 1:
+			System.out.println("Given number is One");
+			break;
+		case 2:
+			System.out.println("Given number is Two");
+			break;
+		case 3:
+			System.out.println("Given number is Three");
+			break;
+		case 4:
+			System.out.println("Given number is Four");
+			break;
+		case 5:
+			System.out.println("Given number is Five");
+			break;
+		case 6:
+			System.out.println("Given number is Six");
+			break;
+		case 7:
+			System.out.println("Given number is Seven");
+			break;
+		case 8:
+			System.out.println("Given number is Eight");
+			break;
+		case 9:
+			System.out.println("Given number is Nine");
+			break;
+		case 0:
+			System.out.println("Given number is Zero");
+			break;
+		default:
+			System.out.println("Given number is Not sure");
+			break;
+		}
+	}
+}
 
 
 
