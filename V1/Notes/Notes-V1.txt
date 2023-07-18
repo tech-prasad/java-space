@@ -2437,7 +2437,8 @@ public class TernaryOperator {
 		System.out.println("v: " + v);
 	}
 }
-
+13-JULY-2023
+------------
 6. instanceof operator
 ----------------------
 it is used compare the reference variable against a Object of a Class.
@@ -2525,6 +2526,8 @@ public class ConcatenationOperator {
 	}
 }
 
+14-JULY-2023
+------------
 9. Bitwise operators
 --------------------
 Bitwise operators perform operation on numbers in the form bits.
@@ -2739,8 +2742,10 @@ public class ATM {
 	}
 }
 
+17-JULY-2023
+------------
 c. if - elseif condition:
----------------------------------
+-------------------------
 "if - else if" condition is used to control flow of execution of multiple blocks.
 
 Syntax: 
@@ -2839,12 +2844,162 @@ public class NumberSystem {
 	}
 }
 
+18-JULY-2023
+------------
+e. for
+------
+for is looping control structure and used to execute some piece of code multiple times until some condition met.
+Syntax:
+for(initialization; condition; increment/decrement){
+	// instructions
+}
+initialization: only once before loop start
+condition: every time before starting loop
+increment/decrement: every time after the loop execution
 
+Example code:
+package com.loop.forex;
 
+public class NumberSystem {
+	public static void main(String[] args) {
+		for (int a = 1; a <= 9; a++) {
+			System.out.println(a);
+		}
+		System.out.println("test");
+		for (int x = 9; x >= 0; x--) {
+			System.out.println(x);
+		}
+	}
+}
 
+f. while:
+---------
+while is looping control structure and used to execute some piece of code multiple times until some condition met.
 
+syntax:
+while(condition){
+	// instructions
+}
+condition: every time before starting loop
 
+Example code:
+package com.loop.whileex;
 
+public class NumberSystem {
+	public static void main(String[] args) {
+
+		int i = 1;
+
+		while (i < 10) {
+			System.out.println(i);
+
+			i++;
+		}
+		System.out.println("test\n");
+
+		int p = 9;
+
+		while (p >= 0) {
+			System.out.println(p);
+			p--;
+		}
+	}
+}
+
+g. do-while:
+------------
+do-while is looping control structure and used to execute some piece of code multiple times until some condition met.
+do-while first execute instructions then check the condition.
+Due to this, even though condition is false for the first time, still loop execute once.
+
+condition: Every time after completing loop.
+syntax:
+do {
+	// instructions
+}while(condition);
+
+Example code:
+package com.loop.dowhileex;
+
+public class NumberSystem {
+	public static void main(String[] args) {
+
+		int a = 1;
+
+		do {
+			System.out.println(a);
+
+			a++;
+		} while (a <= 9);
+
+		System.out.println("test\n");
+
+		int x = 9;
+
+		do {
+			System.out.println(x);
+
+			x--;
+		} while (x >= 0);
+	}
+}
+
+Difference between for loop and while loop:
+
+If we know the boundaries like start and end then we use for loop.
+ex: I want to print prime numbers from 1 to 100
+
+If we do not know the boundaries like start and end then we use while loop.
+ex: I want to print 100 prime numbers
+
+Arrays:
+-------
+Array is collection of data of same type.
+Based on the size of the array memory will be allocated.
+Memory will be allocated in sequence memory locations and initialized with default values. 
+
+syntax:
+datatype[] variableName = new datatype[sizeOfArray];
+
+ex:
+int[] numbers = new int[9];
+
+Array works with index.
+index start from 0 (zero) and end with (array size - 1)
+ex:
+int[] numbers = new int[9];
+size: 9
+start index: 0
+end index: 8
+
+Every array will given with one default property called "length". It determines size of the array.
+
+syntax: array.length
+ex: numbers.length
+
+Example code:
+package com.array;
+
+public class NumberSystem {
+
+	public static void main(String[] args) {
+		int[] numbers = new int[12];
+
+		System.out.println("Size: " + numbers.length);
+
+		for (int i = 0; i < numbers.length; i++) {
+			numbers[i] = i + 1;
+		}
+
+		for (int a = 0; a < numbers.length; a++) {
+			int x = numbers[a];
+
+			System.out.println(x);
+		}
+
+		System.out.println("Number: " + numbers[3]);
+	}
+}
 
 
 
