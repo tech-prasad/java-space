@@ -2693,6 +2693,14 @@ if(condition){
 	// Instructions
 }
 
+Nested if:
+if(condition){
+	// Instructions
+	if(condition){
+		// Instructions
+	}
+}
+
 Example code:
 package com.control.structures;
 
@@ -2872,6 +2880,30 @@ public class NumberSystem {
 	}
 }
 
+Nested for:
+for(initialization; condition; increment/decrement){
+	// instructions
+	for(initialization; condition; increment/decrement){
+		// instructions
+	}
+}
+Example code:
+package com.loop.nestedforex;
+
+public class NestedForLoopExample {
+	public static void main(String[] args) {
+
+		for (int a = 1; a <= 10; a++) {
+
+			for (int b = 1; b <= 10; b++) {
+
+				System.out.println(a + b);
+			}
+		}
+	}
+}
+
+
 f. while:
 ---------
 while is looping control structure and used to execute some piece of code multiple times until some condition met.
@@ -2903,6 +2935,14 @@ public class NumberSystem {
 			System.out.println(p);
 			p--;
 		}
+	}
+}
+
+Nested while:
+while(condition){
+	// instructions
+	while(condition){
+		// instructions
 	}
 }
 
@@ -2944,19 +2984,74 @@ public class NumberSystem {
 	}
 }
 
+Nested do-while:
+do {
+	// instructions
+	do {
+		// instructions
+	}while(condition);
+}while(condition);
+
 Difference between for loop and while loop:
 
 If we know the boundaries like start and end then we use for loop.
-ex: I want to print prime numbers from 1 to 100
+ex: I want to print prime numbers between 1 to 100
 
 If we do not know the boundaries like start and end then we use while loop.
 ex: I want to print 100 prime numbers
+
+continue:
+---------
+continue is key word used to stop the current iteration from executing further instruction and Continue with next iteration.
+
+package com.loop.continueex;
+
+public class ContinueExample {
+	public static void main(String[] args) {
+
+		for (int a = 1; a <= 100; a++) {
+
+			// I dont want to print 67
+			if (a == 67) {
+				continue;
+			}
+			System.out.println(a);
+		}
+	}
+}
+
+We can use continue in loops only.
+We have to use continue conditionally to avoid unreachable code issue.
+
+break:
+------
+break is a keyword and used to stop the loop from executing further completely.
+
+Example code:
+package com.loop.breakex;
+
+public class BreakExample {
+	public static void main(String[] args) {
+
+		for (int a = 1; a <= 100; a++) {
+
+			if (a == 51) {
+				break;
+			}
+
+			System.out.println(a);
+		}
+	}
+}
+
+We can use break in loops, switch only.
+We have to use break conditionally to avoid unreachable code issue.
 
 Arrays:
 -------
 Array is collection of data of same type.
 Based on the size of the array memory will be allocated.
-Memory will be allocated in sequence memory locations and initialized with default values. 
+Memory will be allocated in sequence memory locations and initialized with default values.
 
 syntax:
 datatype[] variableName = new datatype[sizeOfArray];
@@ -3001,5 +3096,68 @@ public class NumberSystem {
 	}
 }
 
+19-JULY-2023
+------------
+Non-Primitive Predefined Data type:
+String:
 
+String[] names = new String[3];
 
+Example code:
+package com.array;
+
+public class StringExample {
+	public static void main(String[] args) {
+
+		String[] names = new String[4];
+
+		names[0] = "Anil";
+		names[1] = "Bharat";
+		names[2] = "Chandu";
+		names[3] = "Druv";
+
+		for (int i = 0; i < names.length; i++) {
+			System.out.println(names[i]);
+		}
+	}
+}
+
+Non-Primitive User defined Data type:
+Student:
+Example code:
+package com.array;
+
+public class StudentExample {
+	public static void main(String[] args) {
+
+		Student[] students = new Student[3];
+
+		Student s1 = new Student();
+		s1.setRollNumber(1);
+		s1.setName("Anil");
+		s1.setAge(22);
+
+		Student s2 = new Student();
+		s2.setRollNumber(2);
+		s2.setName("Bharat");
+		s2.setAge(21);
+
+		Student s3 = new Student();
+		s3.setRollNumber(3);
+		s3.setName("Chandu");
+		s3.setAge(22);
+
+		students[0] = s1;
+		students[1] = s3;
+		students[2] = s2;
+
+		for (int i = 0; i < students.length; i++) {
+			Student s = students[i];
+
+			System.out.println(s.getRollNumber());
+			System.out.println(s.getName());
+			System.out.println(s.getAge());
+			System.out.println();
+		}
+	}
+}
