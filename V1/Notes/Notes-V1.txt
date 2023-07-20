@@ -3000,6 +3000,32 @@ ex: I want to print prime numbers between 1 to 100
 If we do not know the boundaries like start and end then we use while loop.
 ex: I want to print 100 prime numbers
 
+Enhanced for loop:
+------------------
+It works arrays.
+
+Syntax: 
+for(variable : array)
+
+Example code:
+package com.array;
+
+public class EnhancedForLoopExample {
+	public static void main(String[] args) {
+
+		int[] numbers = new int[12];
+
+		System.out.println("Size: " + numbers.length);
+
+		for (int i = 0; i < numbers.length; i++) {
+			numbers[i] = i + 1;
+		}
+		for (int i : numbers) {
+			System.out.println(i);
+		}
+	}
+}
+
 continue:
 ---------
 continue is key word used to stop the current iteration from executing further instruction and Continue with next iteration.
@@ -3099,7 +3125,9 @@ public class NumberSystem {
 19-JULY-2023
 ------------
 Non-Primitive Predefined Data type:
+
 String:
+-------
 
 String[] names = new String[3];
 
@@ -3123,7 +3151,9 @@ public class StringExample {
 }
 
 Non-Primitive User defined Data type:
+
 Student:
+--------
 Example code:
 package com.array;
 
@@ -3161,3 +3191,231 @@ public class StudentExample {
 		}
 	}
 }
+
+20-JULY-2023
+------------
+One more way of creating array:
+datatype[] array = new datatype[] {value1, value2, ...};
+int[] numbers = new int[] { 1, 2, 4, 77, 5, 88 };
+
+package com.array;
+
+public class EnhancedForLoopExample {
+
+	public static void main(String[] args) {
+
+		int[] numbers = new int[] { 1, 2, 4, 77, 5, 88 };
+
+		System.out.println("Size: " + numbers.length);
+
+		for (int i : numbers) {
+			System.out.println(i);
+		}
+	}
+}
+
+package com.array;
+
+public class EnhancedForLoopExample {
+
+	public static void main(String[] args) {
+
+		String[] values = new String[] { "Anil", "Bharat", "Chandu" };
+
+		System.out.println("Size: " + values.length);
+
+		for (String i : values) {
+			System.out.println(i);
+		}
+	}
+}
+
+java.lang package:
+------------------
+Object class has 9 methods as below
+
+public class java.lang.Object {
+  public java.lang.Object(); - Constructor
+  public final native java.lang.Class<?> getClass();
+  public native int hashCode();
+  public boolean equals(java.lang.Object);
+  protected native java.lang.Object clone();
+  public java.lang.String toString();
+  public final native void notify();
+  public final native void notifyAll();
+  public final void wait();
+  public final native void wait(long);
+  public final void wait(long, int);
+  protected void finalize();
+}
+
+getClass(): it return Class object with meta data of the Class.
+hashCode(): it returns the address of the object.
+toString(): it returns string which contains class name and hash code by default.
+equals(): to compare two objects equality.
+
+package com.basics;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class GetClassTest {
+
+	public static void main(String[] args) {
+
+		Student s = new Student();
+
+		Class<? extends Student> sClass = s.getClass();
+
+		System.out.println(sClass.getCanonicalName());
+		System.out.println(sClass.getName());
+		System.out.println(sClass.getPackageName());
+		System.out.println(sClass.getSimpleName());
+
+		Field[] declaredFields = sClass.getDeclaredFields();
+
+		for (Field field : declaredFields) {
+			System.out.println(field.getName());
+		}
+
+		Method[] declaredMethods = sClass.getDeclaredMethods();
+
+		for (Method method : declaredMethods) {
+			System.out.println(method.getName());
+		}
+	}
+}
+
+package com.basics;
+
+public class HashCodeTest {
+	public static void main(String[] args) {
+
+		Student s = new Student();
+
+		int hashCode = s.hashCode();
+
+		System.out.println(hashCode);
+	}
+}
+
+package com.basics;
+
+public class ToStringExample {
+	public static void main(String[] args) {
+
+		Student s = new Student();
+
+		System.out.println(s.toString());
+	}
+}
+
+package com.basics;
+
+public class EqualExample {
+	public static void main(String[] args) {
+		Student s1 = new Student();
+
+		System.out.println(s1.equals(s1));
+
+		Student s2 = new Student();
+
+		System.out.println(s2.equals(s1));
+	}
+}
+
+java.lang package:
+Wrapper classes, String, Math, System, Class.
+
+String class:
+package com.basics;
+
+public class StringExample {
+	public static void main(String[] args) {
+
+		String value = "Test"; // String constant pool - (not in heap)
+
+		String name = new String("Anil"); // in Heap & String constant pool
+
+		for (int i = 0; i < name.length(); i++) {
+
+			char c = name.charAt(i);
+
+			System.out.println(c);
+		}
+
+		String s = name.substring(2);
+
+		System.out.println(s);
+	}
+}
+
+package com.basics;
+
+public class MathExample {
+	public static void main(String[] args) {
+
+		int min = Math.min(2, 4);
+
+		System.out.println(min);
+
+		int max = Math.max(2, 4);
+
+		System.out.println(max);
+
+		double pow = Math.pow(2, 4);
+
+		System.out.println(pow);
+
+		double sqrt = Math.sqrt(4);
+
+		System.out.println(sqrt);
+	}
+}
+
+package com.basics;
+
+public class SystemExample {
+
+	public static void main(String[] args) {
+		System.out.println("test");
+	}
+}
+
+package com.basics;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class GetClassTest {
+
+	public static void main(String[] args) {
+
+		Student s = new Student();
+
+		Class<? extends Student> sClass = s.getClass();
+
+		System.out.println(sClass.getCanonicalName());
+		System.out.println(sClass.getName());
+		System.out.println(sClass.getPackageName());
+		System.out.println(sClass.getSimpleName());
+
+		Field[] declaredFields = sClass.getDeclaredFields();
+
+		for (Field field : declaredFields) {
+			System.out.println(field.getName());
+		}
+
+		Method[] declaredMethods = sClass.getDeclaredMethods();
+
+		for (Method method : declaredMethods) {
+			System.out.println(method.getName());
+		}
+	}
+}
+
+
+
+
+
+
