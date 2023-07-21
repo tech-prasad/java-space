@@ -3414,6 +3414,91 @@ public class GetClassTest {
 	}
 }
 
+21-JULY-2023
+------------
+System.out.println():
+-System is class coming from java.lang package.
+-out is reference variable of type PrintStream and declared as static variable in System class.
+-println() is a instance method in PrintStream class.
+
+public static void main(String[] args):
+public is a access specifier/modifier, and has high scope(can be used any where).
+static is access modifier, and can be used with class name directly.
+void is return type and represents this method do not return anything.
+main is a method name.
+String[] args is method parameter of type String Array.
+
+This method is the Entry point in Java application.
+When we run the code, JVM will call this method to start the execution.
+
+Command line Arguments:
+Command line arguments are the arguments which will be passed while running the code and JVM will pass them to main method.
+
+public class CommandLineArguments {
+	public static void main(String[] args){
+		
+		String arg1 = args[0];
+		String arg2 = args[2];
+		
+		System.out.println(arg1);
+		System.out.println(arg2);
+		
+		for(String s : args){
+			System.out.println(s);			
+		}		
+	}
+}
+
+Run:
+java CommandLineArguments Apple Banana Orange Mango
+
+Here Command line arguments: Apple Banana Orange Mango
+
+java.util package:
+Scanner class: It is used to read input.
+Ex: We can read input from User while running the code.
+
+Collections:
+Collection is a set of data.
+
+java.util.Collection: it is a interface.
+
+int size() - size of the collection.
+boolean isEmpty() - to check collection is empty or not.
+boolean contains(object) - object present in collection or not.
+boolean add(object) - add the object to collection.
+boolean remove(object) - remove the object from collection.
+void clear() - remove all objects from collection.
+
+java.util.List: it is a interface.
+It is a child interface of Collection, so all methods of Collection will be there in List.
+
+object get(int index) - get object from given index of the collection.
+object set(int index, object) - set the object to collection at specified index.
+void add(int index, object) - add the object to collection at specified index.
+object remove(int index) - remove the object from collection with given index.
+
+
+Assignment
+	ATM:
+		add money account
+		balance check
+		get money(conditions)
+		balance check
+		add money account
+		balance check
+		get money(conditions)
+		balance check
+		
+	Student management system:
+	Student 5 = Array 
+		
+	Enhance for loop to print
+
+
+
+
+
 
 
 
