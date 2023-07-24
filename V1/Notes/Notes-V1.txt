@@ -3458,28 +3458,30 @@ java.util package:
 Scanner class: It is used to read input.
 Ex: We can read input from User while running the code.
 
-Collections:
-Collection is a set of data.
+package com.user.input;
 
-java.util.Collection: it is a interface.
+import java.util.Scanner;
 
-int size() - size of the collection.
-boolean isEmpty() - to check collection is empty or not.
-boolean contains(object) - object present in collection or not.
-boolean add(object) - add the object to collection.
-boolean remove(object) - remove the object from collection.
-void clear() - remove all objects from collection.
+public class ScannerExample {
+	public static void main(String[] args) {
 
-java.util.List: it is a interface.
-It is a child interface of Collection, so all methods of Collection will be there in List.
+		Scanner s = new Scanner(System.in);
 
-object get(int index) - get object from given index of the collection.
-object set(int index, object) - set the object to collection at specified index.
-void add(int index, object) - add the object to collection at specified index.
-object remove(int index) - remove the object from collection with given index.
+		System.out.print("Please enter name: ");
+
+		String name = s.nextLine();
+
+		System.out.print("Please enter age: ");
+
+		int age = s.nextInt();
+
+		System.out.println("Name: " + name);
+		System.out.println("Age: " + age);
+	}
+}
 
 
-Assignment
+Assignment:
 	ATM:
 		add money account
 		balance check
@@ -3494,8 +3496,101 @@ Assignment
 	Student 5 = Array 
 		
 	Enhance for loop to print
+-----------------------------
+Array disadvantages:
+int[] numbers = new int[500];
 
+numbers[0] = 23;
+numbers[1] = 45;
+numbers[2] = 21;
+numbers[3] = 3;
 
+numbers[1] = 0;
+
+1. Memory wastage when data is less
+2. Size can not be increased or decreased dynamically
+3. Handling index is a problem to store/remove the value
+
+To resolve array issues, We have collections.
+Collections:
+Collection is a set of data.
+Collection resolves all the disadvantages of Arrays.
+
+java.util.Collection: it is a interface.
+
+int size() - size of the collection.
+boolean isEmpty() - to check collection is empty or not.
+boolean contains(object) - object present in collection or not.
+boolean add(object) - add the object to collection.
+boolean remove(object) - remove the object from collection.
+void clear() - remove all objects from collection.
+
+java.util.List: it is a interface.
+It is a child interface of Collection, so all methods of Collection will be there in List.
+
+object get(int index) - get object from given index of the collection.
+object set(int index, object) - set the object to collection at specified index(replace current index value).
+void add(int index, object) - add the object to collection at specified index.
+object remove(int index) - remove the object from collection with given index.
+Iterator<E> iterator() - Read all the data from collection one by one. 
+boolean addAll(Collection c) - add all the data from passed collection to the current collection.
+
+We can sort a collection using Collections.sort(numbers).
+
+ArrayList:
+ArrayList is implementation class of List interface.
+ArrayList is used to store set of data.
+ArrayList use arrays in side to store the data.
+Duplicates allowed.
+Data stored in the order of we insert.
+
+Example code:
+package com.user.list;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+public class ArrayListExample {
+
+	public static void main(String[] args) {
+
+		List<Integer> numbers = new ArrayList<>();
+
+		System.out.println(numbers.isEmpty()); // true
+
+		System.out.println(numbers.size()); // 0
+
+		numbers.add(34);
+
+		Iterator<Integer> iterator = numbers.iterator();
+
+		while (iterator.hasNext()) {
+			Integer integer = (Integer) iterator.next();
+
+			System.out.print(integer + " ");
+		}
+	}
+}
+
+List interface implementation classes:
+ArrayList (Mostly used)
+LinkedList
+Vector
+Stack
+Legacy classes: Vector, Stack
+---
+LinkedList: Nodes inside
+	Node {
+		data : int string etc
+		link : Node {
+			data : int string etc
+			link : Node {
+				more nodes
+			}
+		}
+	}
 
 
 
