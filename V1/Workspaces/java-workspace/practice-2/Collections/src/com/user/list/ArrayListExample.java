@@ -126,5 +126,13 @@ public class ArrayListExample {
 		for (Integer integer : numbers) { // Nothing will be printed as List is empty
 			System.out.print(integer + " ");
 		}
+
+		numbers.add(null);
+		numbers.add(null);
+		numbers.add(null);
+
+		for (Integer integer : numbers) {
+			System.out.print(integer + " ");
+		}
 	}
 }

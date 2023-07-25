@@ -3512,9 +3512,12 @@ numbers[1] = 0;
 3. Handling index is a problem to store/remove the value
 
 To resolve array issues, We have collections.
-Collections:
-Collection is a set of data.
-Collection resolves all the disadvantages of Arrays.
+Collections framework:
+
+Collections is a set of data.
+Collections framework resolves all the disadvantages of Arrays.
+Size will increase automatically.
+Predefined methods to perform most the required operations.
 
 java.util.Collection: it is a interface.
 
@@ -3543,6 +3546,7 @@ ArrayList is used to store set of data.
 ArrayList use arrays in side to store the data.
 Duplicates allowed.
 Data stored in the order of we insert.
+Null values also allowed.
 
 Example code:
 package com.user.list;
@@ -3592,10 +3596,294 @@ LinkedList: Nodes inside
 		}
 	}
 
+java.util.Set: it is a interface.
+It is a child interface of Collection, so all methods of Collection will be there in Set.
 
+Set and its implementations won't allow index based operation.
 
+boolean addAll(Collection<? extends E> c)
+Iterator<E> iterator();
 
+HashSet:
+HashSet is implementation class of Set interface.
+HashSet is used to store set of data.
+It used nodes to store the data.
+Order is not guarantied.
+It follows hashing algorithm to find the position of the data to store.
+Duplicates not allowed, If we add duplicate value, New value will override old value.
+Null value allowed but only one.
 
+package com.user.set;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
+public class HashSetExample {
+	public static void main(String[] args) {
+
+		Set<String> names = new HashSet<>();
+
+		System.out.println(names.size()); // 0
+		System.out.println(names.isEmpty()); // true
+
+		names.add("Anil");
+
+		System.out.println(names.size()); // 1
+		System.out.println(names.isEmpty());// false
+
+		names.add("Bharat");
+		names.add("Chandu");
+		names.add("Chandu");
+
+		Iterator<String> iterator = names.iterator();
+
+		while (iterator.hasNext()) {
+			String name = (String) iterator.next();
+			System.out.print(name + " ");
+		}
+	}
+}
+
+TreeSet:
+TreeSet is implementation class of Set interface.
+TreeSet is used to store set of data.
+It used nodes to store the data.
+Sorted order(Ascending /Descending).
+Duplicates not allowed, If we add duplicate value, New value will override old value.
+Null value not allowed (Error).
+
+package com.user.set;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class TreeSetExample {
+	public static void main(String[] args) {
+
+		Set<String> names = new TreeSet<>();
+
+		System.out.println(names.size()); // 0
+		System.out.println(names.isEmpty()); // true
+
+		names.add("Anil");
+
+		System.out.println(names.size()); // 1
+		System.out.println(names.isEmpty());// false
+
+		names.add("Bharat");
+		names.add("Chandu");
+		names.add("Chandu");
+
+		Iterator<String> iterator = names.iterator();
+
+		while (iterator.hasNext()) {
+			String name = (String) iterator.next();
+			System.out.print(name + " ");
+		}
+	}
+}	
+
+Map:
+Map is a Collection which stores data in terms of key and value pair.
+key1 = value1 (Entry1)
+key2 = value2 (Entry2)
+key3 = value3 (Entry3)
+
+int size() - size of the Map.
+boolean isEmpty() - to check Map is empty or not.
+Value put(key, value) - to add key and value pair to Map.
+void putAll(Map) - to add all passed Map elements to current Map.
+boolean containsKey(key) - to check given key present or not.
+boolean containsValue(value) - to check given value present or not.
+Value get(key) - to get value based on key.
+Value remove(key) - to remove key and value entry based on key.
+Set<Key> keySet() - to get all keys from Map.
+Collection<Value> values() - to get all values from Map.
+Set<Map.Entry<K, V>> entrySet() - to get all key and value pair as Entry from Map.
+void clear() - remove all objects from Map.
+
+HashMap:
+HashMap is implementation class of Map interface.
+HashMap is used to store set of data in terms of key and value pair as entry.
+It used nodes to store the data.
+Order is not guarantied.
+It follows hashing algorithm to find the position of the key to store.
+Duplicates not allowed in key, If we add duplicate key, New key will override old key.
+Duplicates allowed in value.
+Null key allowed but only one.
+Null values allowed.
+If we want to get the value, we have to pass key.
+If key present corresponding value will be returned otherwise null will be returned.
+
+package com.user.map;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class HashMapExample {
+	public static void main(String[] args) {
+
+		Map<String, Integer> students = new HashMap<>();
+
+		System.out.println(students.size()); // 0
+		System.out.println(students.isEmpty()); // true
+
+		students.put("Anil", 567);
+
+		System.out.println(students.size()); // 1
+		System.out.println(students.isEmpty()); // false
+
+		students.put("Chandu", 345);
+		students.put("Bharat", 455);
+
+		System.out.println(students.size()); // 3
+		System.out.println(students.isEmpty()); // false
+
+		students.put("Anil", 456);
+
+		System.out.println(students.size()); // 3
+		System.out.println(students.isEmpty()); // false
+
+		System.out.println(students.containsKey("Bharat"));// true
+		System.out.println(students.containsValue(567));// false
+
+		System.out.println(students.size()); // 3
+		students.remove("Chandu");
+		System.out.println(students.size()); // 2
+
+		Integer total = students.get("Bharat");
+		System.out.println(total);
+
+		Integer total2 = students.get("Test");
+		System.out.println(total2);
+	}
+}
+
+TreeMap:
+TreeMap is implementation class of Map interface.
+TreeMap is used to store set of data in terms of key and value pair as entry.
+It used nodes to store the data.
+Sorted Order(ASC/DSC).
+Duplicates not allowed in key, If we add duplicate key, New key will override old key.
+Duplicates allowed in value.
+Null key not allowed(Error).
+Null values allowed.
+If we want to get the value, we have to pass key.
+If key present corresponding value will be returned otherwise null will be returned.
+
+package com.user.map;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class TreeMapExample {
+
+	public static void main(String[] args) {
+
+		Map<String, Integer> students = new TreeMap<>();
+
+		System.out.println(students.size()); // 0
+		System.out.println(students.isEmpty()); // true
+
+		students.put("Anil", 567);
+
+		System.out.println(students.size()); // 1
+		System.out.println(students.isEmpty()); // false
+
+		students.put("Chandu", 345);
+		students.put("Bharat", 455);
+
+		System.out.println(students.size()); // 3
+		System.out.println(students.isEmpty()); // false
+
+		students.put("Anil", 456);
+
+		System.out.println(students.size()); // 3
+		System.out.println(students.isEmpty()); // false
+
+		System.out.println(students.containsKey("Bharat"));// true
+		System.out.println(students.containsValue(567));// false
+
+		System.out.println(students.size()); // 3
+		students.remove("Chandu");
+		System.out.println(students.size()); // 2
+
+		Integer total = students.get("Bharat");
+		System.out.println(total);
+
+		Integer total2 = students.get("Test");
+		System.out.println(total2);
+	}
+}
+	
+Hashtable:
+Hashtable is implementation class of Map interface.
+Hashtable is used to store set of data in terms of key and value pair as entry.
+It used nodes to store the data.
+Order is not guarantied.
+It follows hashing algorithm to find the position of the key to store.
+Duplicates not allowed in key, If we add duplicate key, New key will override old key.
+Duplicates allowed in value.
+Null key not allowed(Error).
+Null value not allowed.
+If we want to get the value, we have to pass key.
+If key present corresponding value will be returned otherwise null will be returned.
+
+package com.user.map;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class HashtableExample {
+
+	public static void main(String[] args) {
+
+		Map<String, Integer> students = new Hashtable<>();
+
+		System.out.println(students.size()); // 0
+		System.out.println(students.isEmpty()); // true
+
+		students.put("Anil", 567);
+
+		System.out.println(students.size()); // 1
+		System.out.println(students.isEmpty()); // false
+
+		students.put("Chandu", 345);
+		students.put("Bharat", 455);
+
+		System.out.println(students.size()); // 3
+		System.out.println(students.isEmpty()); // false
+
+		students.put("Anil", 456);
+
+		System.out.println(students.size()); // 3
+		System.out.println(students.isEmpty()); // false
+
+		System.out.println(students.containsKey("Bharat"));// true
+		System.out.println(students.containsValue(567));// false
+
+		System.out.println(students.size()); // 3
+		students.remove("Chandu");
+		System.out.println(students.size()); // 2
+
+		Integer total = students.get("Bharat");
+		System.out.println(total);
+
+		Integer total2 = students.get("Test");
+		System.out.println(total2);
+	}
+}	
 
