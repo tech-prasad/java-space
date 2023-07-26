@@ -3512,6 +3512,7 @@ numbers[1] = 0;
 3. Handling index is a problem to store/remove the value
 
 To resolve array issues, We have collections.
+
 Collections framework:
 
 Collections is a set of data.
@@ -3599,7 +3600,7 @@ LinkedList: Nodes inside
 java.util.Set: it is a interface.
 It is a child interface of Collection, so all methods of Collection will be there in Set.
 
-Set and its implementations won't allow index based operation.
+Set and its implementations won't allow index based operations.
 
 boolean addAll(Collection<? extends E> c)
 Iterator<E> iterator();
@@ -3649,7 +3650,7 @@ TreeSet:
 TreeSet is implementation class of Set interface.
 TreeSet is used to store set of data.
 It used nodes to store the data.
-Sorted order(Ascending /Descending).
+Sorted order(Ascending).
 Duplicates not allowed, If we add duplicate value, New value will override old value.
 Null value not allowed (Error).
 
@@ -3714,8 +3715,7 @@ Duplicates not allowed in key, If we add duplicate key, New key will override ol
 Duplicates allowed in value.
 Null key allowed but only one.
 Null values allowed.
-If we want to get the value, we have to pass key.
-If key present corresponding value will be returned otherwise null will be returned.
+If we want to get the value, we have to pass key, If key present, corresponding value will be returned otherwise null will be returned.
 
 package com.user.map;
 
@@ -3768,7 +3768,7 @@ TreeMap:
 TreeMap is implementation class of Map interface.
 TreeMap is used to store set of data in terms of key and value pair as entry.
 It used nodes to store the data.
-Sorted Order(ASC/DSC).
+Sorted Order(ASC).
 Duplicates not allowed in key, If we add duplicate key, New key will override old key.
 Duplicates allowed in value.
 Null key not allowed(Error).
@@ -3834,7 +3834,7 @@ It follows hashing algorithm to find the position of the key to store.
 Duplicates not allowed in key, If we add duplicate key, New key will override old key.
 Duplicates allowed in value.
 Null key not allowed(Error).
-Null value not allowed.
+Null value not allowed(Error).
 If we want to get the value, we have to pass key.
 If key present corresponding value will be returned otherwise null will be returned.
 
@@ -3886,4 +3886,173 @@ public class HashtableExample {
 		System.out.println(total2);
 	}
 }	
+
+Collections class:
+Collections is utility class and has various methods to perform different operations.
+
+Ex: sort, reverse, search, shuffle, etc.
+
+package com.user.list;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class CollectionsExample {
+	public static void main(String[] args) {
+
+		List<Integer> numbers = new ArrayList<>();
+
+		numbers.add(34);
+		numbers.add(23);
+		numbers.add(56);
+		numbers.add(2);
+
+		for (Integer a : numbers) {
+			System.out.print(a + " ");
+		}
+		System.out.println();
+
+		Collections.sort(numbers);
+
+		for (Integer a : numbers) {
+			System.out.print(a + " ");
+		}
+		System.out.println();
+
+		Collections.reverse(numbers);
+
+		for (Integer a : numbers) {
+			System.out.print(a + " ");
+		}
+		System.out.println();
+
+		int indexPresent = Collections.binarySearch(numbers, 34);
+		
+		System.out.println(indexPresent);
+		
+		int indexNotPresent = Collections.binarySearch(numbers, 99);
+
+		System.out.println(indexNotPresent);
+	}
+}
+
+
+Collection framework summary of interface and class:
+1. Collection interface
+	List child interface
+		ArrayList class
+		LinkedList class
+		Vector class
+		Stack class
+	Set child interface
+		HashSet class
+		TreeSet class
+2. Map interface
+	HashMap class
+	TreeMap class
+	Hashtable class
+
+26-JULY-2023
+------------
+Exception handling:
+-------------------	
+
+Exception:
+Exception is runtime error.
+Exception cause program stop abnormally (abnormal termination of program).
+Java uses Exception classes and Objects to notify errors.
+
+Exception handling:
+With Exception handling we can avoid abnormal termination of the program.
+To handle the exception we have to use try and catch blocks.
+
+try:
+try is keyword used in exception handling.
+inside try block, we have to add the code which may cause exception and the statements which are depending on that code.
+
+try {
+	int c = a / b;
+	System.out.println("div: " + c);
+}
+
+JVM creates corresponding exception object by keeping error details inside object and throw that exception object.
+
+catch:
+catch is keyword used to catch the exception object which is thrown.
+
+catch (ArithmeticException e) {
+	System.out.println(e.getMessage());
+}
+
+Inside catch block, we can perform operations as per the requirement.
+
+Exception handling:
+try {
+	int c = a / b; // Problematic statement
+	System.out.println("div: " + c); // Dependent statement
+} catch (ArithmeticException e) {
+	System.out.println(e.getMessage()); // Statement of using exception
+}
+
+Example:
+package com.operators.arithmetic;
+
+public class Calculator {
+	public void mul(int a, int b) {
+		int c = a * b;
+		System.out.println("mul: " + c);
+	}
+
+	public void div(int a, int b) {
+		try {
+			int c = a / b;
+			System.out.println("div: " + c);
+		} catch (ArithmeticException e) {
+			System.out.println("div: " + 0);
+		}
+
+		System.out.println("div completed");
+	}
+
+	public void add(int a, int b) {
+		int c = a + b;
+		System.out.println("add: " + c);
+	}
+	public void sub(int a, int b) {
+		int c = a - b;
+
+		System.out.println("sub: " + c);
+	}
+	public static void main(String[] args) {
+
+		Calculator c = new Calculator();
+
+		int x = 5;
+		int y = 0;
+
+		c.mul(x, y);//0
+		c.div(x, y);//0/div completed
+		c.sub(x, y);//5
+		c.add(x, y);//5
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
