@@ -3960,7 +3960,7 @@ Exception handling:
 
 Exception:
 Exception is runtime error.
-Exception cause program stop abnormally (abnormal termination of program).
+Exception cause program to stop abnormally (abnormal termination of program).
 Java uses Exception classes and Objects to notify errors.
 
 Exception handling:
@@ -3976,7 +3976,7 @@ try {
 	System.out.println("div: " + c);
 }
 
-JVM creates corresponding exception object by keeping error details inside object and throw that exception object.
+When exception occurred, JVM creates corresponding exception object by keeping error details inside object and throw that exception object.
 
 catch:
 catch is keyword used to catch the exception object which is thrown.
@@ -4038,21 +4038,137 @@ public class Calculator {
 	}
 }
 
+27-JULY-2023
+------------
+Exception is a class which is Parent class for all the exceptions in Java.
 
+Multi catch block:
+As a developer we have to think various exceptions may occur in some piece of code and we have handle all of them using multi catch block.
 
+ex 1: different way of handling exceptions then use multiple separate catch block.
+public void div(int a, int b) {
+	try {
+		int c = numbers[a] / b;
+		System.out.println("div: " + c);
+	} catch (ArithmeticException e) {
+		System.out.println("div: " + 0);
+	} catch (ArrayIndexOutOfBoundsException e) {
+		System.out.println(e.getMessage());
+	} catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+}
 
+Always keep parent class exception at the end.
+ex: Exception
 
+ex 2: Same way of handling exceptions then use single catch block with multiple exceptions with pipe(|) separator.
+public void div(int a, int b) {
+	try {
+		int c = numbers[a] / b;
+		System.out.println("div: " + c);
+	} catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+		System.out.println(e.getMessage());
+	}
+}
 
+ex 3: Same way of handling exceptions then use single catch block with Exception.
+public void div(int a, int b) {
+	try {
+		int c = numbers[a] / b;
+		System.out.println("div: " + c);
+	} catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+}
 
+Checked exceptions:
+Checked exception is exception occurred at run time but notified by compiler to give an indication to the developer there is chance getting that exception.
 
+ex: FileNotFoundException
 
+ex 1:
+public class ExceptionTest {
+	public void test() {
+		try {
+			FileInputStream in = new FileInputStream("c://test.txt");
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	public static void main(String[] args) {
+		ExceptionTest t = new ExceptionTest();
 
+		t.test();
+	}
+}
 
+ex 2:
 
+public class ExceptionTest {
 
+	public void test() throws FileNotFoundException {
+		FileInputStream in = new FileInputStream("c://test.txt");
+	}
 
+	public static void main(String[] args) {
+		ExceptionTest t = new ExceptionTest();
 
+		try {
+			t.test();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
 
+throws:
+throws is keyword and used propagate the exception to the caller method.
+Now that exception will received by caller and caller has handle it or propagate.
 
+UnChecked exceptions:
+UnChecked exception is a exception occurred at runtime.
 
+ex: ArithmeticException
+try {
+	int c = numbers[a] / b;
+	System.out.println("div: " + c);
+} catch (ArithmeticException e) {
+	System.out.println("div: " + 0);
+}
+
+finally block:
+finally is a keyword.
+If we want to execute some piece of code even though there is an exception or no exception then we have to write that code in finally block.
+
+finally block code will be executed monetarily.
+in finally block, we generally write memory cleanup and resource release.
+
+public class ExceptionTest {
+	public void test() {
+		FileInputStream in = null;
+		try {
+			in = new FileInputStream("c://test.txt");
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if(in != null){
+				in.close();
+			}
+		}
+	}
+	public static void main(String[] args) {
+		ExceptionTest t = new ExceptionTest();
+
+		t.test();
+	}
+}
+
+Important exceptions:
+Exception
+RuntimeException
+ArithmeticException - when we perform arithmetic operations
+ArrayIndexOutOfBoundsException - When we are dealing with Array Index.
+FileNotFoundException - When we are dealing with Files
+NullPointerException - When we use a reference variable with out initializing with object.
 
