@@ -3960,8 +3960,9 @@ Exception handling:
 
 Exception:
 Exception is runtime error.
-Exception cause program to stop abnormally (abnormal termination of program).
+Exception cause program to stop abnormally (abnormal termination of program)(Crashing).
 Java uses Exception classes and Objects to notify errors.
+Exceptions caused by code.
 
 Exception handling:
 With Exception handling we can avoid abnormal termination of the program.
@@ -4082,7 +4083,8 @@ public void div(int a, int b) {
 	}
 }
 
-Checked exceptions:
+Two types exceptions:
+1. Checked exceptions:
 Checked exception is exception occurred at run time but notified by compiler to give an indication to the developer there is chance getting that exception.
 
 ex: FileNotFoundException
@@ -4126,7 +4128,7 @@ throws:
 throws is keyword and used propagate the exception to the caller method.
 Now that exception will received by caller and caller has handle it or propagate.
 
-UnChecked exceptions:
+2. UnChecked exceptions:
 UnChecked exception is a exception occurred at runtime.
 
 ex: ArithmeticException
@@ -4141,8 +4143,8 @@ finally block:
 finally is a keyword.
 If we want to execute some piece of code even though there is an exception or no exception then we have to write that code in finally block.
 
-finally block code will be executed monetarily.
-in finally block, we generally write memory cleanup and resource release.
+finally block code will be executed moderately.
+in finally block, we generally write memory cleanup and resource release code.
 
 public class ExceptionTest {
 	public void test() {
@@ -4165,10 +4167,255 @@ public class ExceptionTest {
 }
 
 Important exceptions:
-Exception
-RuntimeException
+Exception - Predefined checked exception
+RuntimeException - Predefined unchecked exception (child of Exception).
 ArithmeticException - when we perform arithmetic operations
 ArrayIndexOutOfBoundsException - When we are dealing with Array Index.
 FileNotFoundException - When we are dealing with Files
 NullPointerException - When we use a reference variable with out initializing with object.
+
+Throwable:
+Throwable is Predefined class in Java, and it is parent class class of Exception.
+
+Errors: runtime errors.
+OutOfMemoryError: caused by JVM.
+StackOverflowError: caused by JVM.
+
+From these errors we can not recover the application from crashing or abnormal.
+
+User defined exceptions:
+package com.atm;
+
+public class InsufficientBalanceException extends RuntimeException {
+
+	public InsufficientBalanceException(String message) {
+		super(message);
+	}
+}
+
+package com.atm;
+
+public class ATM {
+
+	private int amount;
+
+	public int balance() {
+		return amount;
+	}
+
+	public void credit(int amount) {
+		this.amount += amount;
+	}
+
+	public int withdraw(int withdrawAmount) {
+
+		if (withdrawAmount > amount) {
+			InsufficientBalanceException exception = new InsufficientBalanceException(
+					"Entered amount is more than the available balance");
+
+			throw exception;
+		}
+
+		this.amount -= withdrawAmount;
+
+		return withdrawAmount;
+	}
+
+	public static void main(String[] args) {
+		ATM atm = new ATM();
+
+		System.out.println(atm.balance());
+
+		atm.credit(123);
+
+		System.out.println(atm.balance());
+
+		int withdraw = atm.withdraw(1000);
+
+		System.out.println(withdraw);
+
+		System.out.println(atm.balance());
+	}
+}
+
+InsufficientBalanceException is unchecked exception.
+
+throw is a key word and used to create the exception manually.
+
+31-JULY-2023
+------------
+I/O: File handling (java.io package)
+
+File is a class used to perform various operations on file.
+	System.out.println(file.exists());
+
+FileInputStream is a class and used to read the data in bytes.
+FileOutputStream is a class and used to write the data in bytes.
+
+package com.io.read;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class HandleFile {
+
+	private static void read(String fileName) {
+
+		FileInputStream in = null;
+
+		try {
+			File file = new File(fileName);
+
+			System.out.println(file.exists());
+
+			in = new FileInputStream(file);
+
+			int d;
+
+			while ((d = in.read()) != -1) {
+
+				char c = (char) d;
+
+				System.out.print(c);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public static void write(String fileName) {
+
+		File file = new File(fileName);
+		FileOutputStream out = null;
+		try {
+			String content = "Errors: runtime errors. OutOfMemoryError: caused by JVM. StackOverflowError: caused by JVM.";
+			
+			out = new FileOutputStream(file, true);
+
+			out.write(content.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
+	public static void main(String[] args) {
+		String fileName = "F:\\Work\\test_v2.txt";
+		read(fileName);
+		System.out.println();
+		System.out.println();
+		write(fileName);
+		read(fileName);
+	}
+}
+
+FileReader is class and used to read the data in character format.
+BufferedReader is a class used to read the data with buffer.
+
+FileWriter is class and used to write the data in character format.
+BufferedWriter is a class used to write the data with buffer.
+
+package com.io.read;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+
+public class HandleBufferFile {
+
+	public static void read(String fileName) {
+
+		File file = new File(fileName);
+
+		Reader r = null;
+		try {
+			r = new FileReader(file);
+
+			BufferedReader in = new BufferedReader(r);
+
+			String line;
+
+			while ((line = in.readLine()) != null) {
+				System.out.println(line);
+			}
+
+			in.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (r != null) {
+				try {
+					r.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public static void write(String fileName) {
+		File file = new File(fileName);
+
+		String content = "Errors: runtime errors. OutOfMemoryError: caused by JVM. StackOverflowError: caused by JVM.";
+		Writer writer = null;
+		try {
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+		
+			writer = new FileWriter(file, true);
+
+			BufferedWriter out = new BufferedWriter(writer);
+
+			out.write(content);
+
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		String fileName = "F:\\Work\\test_v2.txt";
+
+		read(fileName);
+		System.out.println();
+		System.out.println();
+		write(fileName);
+		read(fileName);
+	}
+}
 
