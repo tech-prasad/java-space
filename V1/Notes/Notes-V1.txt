@@ -4419,3 +4419,61 @@ public class HandleBufferFile {
 	}
 }
 
+01-AUG-2023
+Multi Threading:
+---------------
+Process: Process is a Task which include one or more Threads.
+Thread: Thread is a sub task which is part of Process.
+
+Multi Threading: Applying multiple threads to complete a single process faster.
+with Multi Threading, we can execute tasks simultaneously.
+with Multi Threading, we can reduce execution time.
+
+All Same=Simultaneously - Parallel - Concurrently
+
+But before applying Multi Threading, we have to think whether requirement suite or not.
+
+We can not apply Multi Threading on every process.
+
+We can apply Multi Threading on specific process where multiple tasks can be executed Concurrently to complete process.
+
+How to create a Thread:
+
+We have to create a class and extend from Thread class and Overrdie run method.
+
+Create the object and call start() method.
+
+public class PolindromeExecutor extends Thread {
+
+	private List<Integer> polindromeNumbers;
+
+	public List<Integer> getPolindromeNumbers() {
+		return polindromeNumbers;
+	}
+
+	@Override
+	public void run() {
+		Polindrome polindrome = new Polindrome();
+
+		List<Integer> polindromes = polindrome.polindromes(10000);
+
+		this.polindromeNumbers = polindromes;
+	}
+}
+
+public class NumberProcessor {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		PolindromeExecutor polindromeExecutor = new PolindromeExecutor();
+
+		polindromeExecutor.start();
+	
+		polindromeExecutor.join();
+
+		List<Integer> polindromeNumbers = polindromeExecutor.getPolindromeNumbers();
+
+		System.out.println(polindromeNumbers);
+	}
+}	
+
