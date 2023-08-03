@@ -4175,13 +4175,13 @@ FileNotFoundException - When we are dealing with Files
 NullPointerException - When we use a reference variable with out initializing with object.
 
 Throwable:
-Throwable is Predefined class in Java, and it is parent class class of Exception.
+Throwable is Predefined class in Java, and it is parent class of Exception.
 
 Errors: runtime errors.
 OutOfMemoryError: caused by JVM.
 StackOverflowError: caused by JVM.
 
-From these errors we can not recover the application from crashing or abnormal.
+From these errors we can not recover the application from crashing or abnormal termination.
 
 User defined exceptions:
 package com.atm;
@@ -4422,7 +4422,7 @@ public class HandleBufferFile {
 01-AUG-2023
 Multi Threading:
 ---------------
-Process: Process is a Task which include one or more Threads.
+Process: Process is a Task which include one or more Threads(sub tasks).
 Thread: Thread is a sub task which is part of Process.
 
 Multi Threading: Applying multiple threads to complete a single process faster.
@@ -4438,10 +4438,15 @@ We can not apply Multi Threading on every process.
 We can apply Multi Threading on specific process where multiple tasks can be executed Concurrently to complete process.
 
 How to create a Thread:
+We can create thread in two ways.
+1. extends from Thread class
+2. implements Runnable interface
 
-We have to create a class and extend from Thread class and Overrdie run method.
+1. We have to create a class and extend from Thread class and Override run method.
 
-Create the object and call start() method.
+Create the thread object and call start() method.
+JVM will run method internally.
+We should not call run method directly.
 
 public class PolindromeExecutor extends Thread {
 
@@ -4477,3 +4482,114 @@ public class NumberProcessor {
 	}
 }	
 
+2. implements Runnable interface:
+We have to create a class and implements from Runnable interface and Override run method.
+
+package com.task;
+
+public class SharedResource {
+
+	private int number = 0;
+
+	public void increment() {
+		number++;
+	}
+
+	public int getSharedResourceValue() {
+		return number;
+	}
+}
+
+package com.task;
+
+public class IncrementExecutor implements Runnable {
+
+	private SharedResource sharedResource;
+
+	public IncrementExecutor(SharedResource sharedResource) {
+		this.sharedResource = sharedResource;
+	}
+
+	@Override
+	public void run() {
+
+		while (sharedResource.getSharedResourceValue() < 5000) {
+
+			synchronized (sharedResource) {
+				sharedResource.increment();
+
+				Thread currentThread = Thread.currentThread();
+
+				String name = currentThread.getName();
+
+				System.out.println(name + ": " + sharedResource.getSharedResourceValue());
+			}
+
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+package com.task;
+
+public class IncrementProcessor {
+	public static void main(String[] args) throws InterruptedException {
+
+		SharedResource resource = new SharedResource();
+
+		IncrementExecutor executor = new IncrementExecutor(resource);
+
+		Thread t1 = new Thread(executor);
+		t1.setName("First");
+
+		t1.start();
+
+		t1.join();
+
+		System.out.println(resource.getSharedResourceValue());
+	}
+}
+
+run method: 
+The actual thread logic written in run method and we should not call this method directly.
+
+start method: this method is used to start a thread which internally call run method and it is coming from Thread class.
+
+join method: this is used to block currently running thread to wait until started thread to complete.
+Ex: 
+public static void main(String[] args) throws InterruptedException {
+
+		IncrementExecutor executor = new IncrementExecutor(new SharedResource());
+
+		Thread t1 = new Thread(executor);
+
+		t1.start();
+
+		t1.join(); // Block main thread until t1 thread complete
+
+		System.out.println("Done");
+}
+
+in above code, as we called t1.join(), main thread  will wait until t1 thread complete.
+
+synchronized:
+It is a key word and used to create synchronized block or method which indicates JVM to allow threads to execute this code thread by thread at a time.
+
+Thread.sleep(10) - this method make the currently running thread to sleep for 10 Milli seconds.
+
+main thread: this is thread created by JVM to start application and execute.
+
+daemon thread: it is a thread which execute in background and JVM wont wait Daemon thread to complete.
+
+By default all threads non-daemon threads. If we want to create Daemon threads we have to make it manually.
+	Thread t1 = new Thread(executor);
+	t1.setName("First");
+	t1.setDaemon(true);
+
+
+https://dev.mysql.com/downloads/windows/installer/8.0.html
+https://dbeaver.io/files/dbeaver-ce-latest-win32.win32.x86_64.zip
