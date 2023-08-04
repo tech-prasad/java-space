@@ -90,6 +90,8 @@ Which company developed Java?
 
 Define Java?
 	Java is a High level, Object oriented programming language and used to develop Standalone, Web and Enterprise Applications. It was developed by Sun MicroSystem and Now Owned by Oracle.
+	
+	Java is an API which contains classes and interfaces.
 
 Explain Object oriented Programing Language Principles?
 
@@ -4593,3 +4595,295 @@ By default all threads non-daemon threads. If we want to create Daemon threads w
 
 https://dev.mysql.com/downloads/windows/installer/8.0.html
 https://dbeaver.io/files/dbeaver-ce-latest-win32.win32.x86_64.zip
+
+JDBC:
+JDBC is an API which contains classes and interfaces to connect with Database.
+
+Driver setup: Download driver jar file and set in Build path of Project.
+
+JDBC Url: It is used Identify Database
+Ex: jdbc:mysql://localhost:3306/student_ms
+
+Username: Username of the database
+Password: Password of the database
+
+Connection: We need Connection object, to create Connection object we need DriverManager.
+
+Ex: 
+	Connection connection = DriverManager.getConnection(jdbcUrl, userName, password);
+
+PreparedStatement: We need to create PreparedStatement object, to create object we have use Connection object.
+Set Positional parameters to PreparedStatement object, if any.
+
+	PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+	preparedStatement.setInt(1, student.getRollNumber());
+	preparedStatement.setString(2, student.getName());
+	preparedStatement.setDate(3, student.getDateOfBirth());
+	preparedStatement.setInt(4, student.getMobileNumber());
+	
+To execute query we have to call corresponding methods on PreparedStatement object.
+
+To perform insert, update, delete use preparedStatement.executeUpdate() method.
+ex: 
+	int rowsAffected = preparedStatement.executeUpdate();
+
+	if (rowsAffected > 0) {
+		System.out.println("insert success");
+	} else {
+		System.out.println("insert failed");
+	}
+
+To perform select use preparedStatement.executeQuery() method.
+ex:
+	ResultSet resultSet = preparedStatement.executeQuery();
+
+	while (resultSet.next()) {
+
+		student = new Student();
+
+		int studentNumber = resultSet.getInt("roll_number");
+		String name = resultSet.getString("name");
+		Date date = resultSet.getDate("dob");
+		int mobile = resultSet.getInt("mobile");
+
+		student.setRollNumber(studentNumber);
+		student.setName(name);
+		student.setDateOfBirth(date);
+		student.setMobileNumber(mobile);
+	}
+
+In finally block close resources (Connection, PreparedStatement).
+
+finally {
+	if (preparedStatement != null) {
+		try {
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	if (connection != null) {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+CRUD Operations:
+C - Insert
+R - Select
+U - Update
+D - Delete
+
+
+package com.sms;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class StudentSystem {
+
+	public void insert(Student student) {
+
+		String query = "insert into student (roll_number, name, dob, mobile) values (?, ?, ?, ?)";
+
+		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
+		String userName = "root";
+		String password = "root";
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setInt(1, student.getRollNumber());
+			preparedStatement.setString(2, student.getName());
+			preparedStatement.setDate(3, student.getDateOfBirth());
+			preparedStatement.setInt(4, student.getMobileNumber());
+
+			int rowsAffected = preparedStatement.executeUpdate();
+
+			if (rowsAffected > 0) {
+				System.out.println("insert success");
+			} else {
+				System.out.println("insert failed");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public Student getStudent(int rollNumber) {
+		Student student = null;
+
+		String query = "select roll_number, name, dob, mobile from student where roll_number = ?";
+
+		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
+		String userName = "root";
+		String password = "root";
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setInt(1, rollNumber);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				student = new Student();
+
+				int studentNumber = resultSet.getInt("roll_number");
+				String name = resultSet.getString("name");
+				Date date = resultSet.getDate("dob");
+				int mobile = resultSet.getInt("mobile");
+
+				student.setRollNumber(studentNumber);
+				student.setName(name);
+				student.setDateOfBirth(date);
+				student.setMobileNumber(mobile);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return student;
+	}
+
+	public Student updateStudent(int rollNumber, int updatedMobile) {
+		Student student = null;
+
+		String query = "update student set mobile = ? where roll_number = ?";
+
+		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
+		String userName = "root";
+		String password = "root";
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setInt(1, updatedMobile);
+			preparedStatement.setInt(2, rollNumber);
+
+			int rowsAffected = preparedStatement.executeUpdate();
+
+			if (rowsAffected > 0) {
+				System.out.println("Update success");
+
+				student = getStudent(rollNumber);
+			} else {
+				System.out.println("Update failed");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return student;
+	}
+
+	public void deleteStudent(int rollNumber) {
+
+		String query = "delete from student where roll_number = ?";
+
+		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
+		String userName = "root";
+		String password = "root";
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setInt(1, rollNumber);
+
+			int rowsAffected = preparedStatement.executeUpdate();
+
+			if (rowsAffected > 0) {
+				System.out.println("Delete success");
+			} else {
+				System.out.println("Delete failed");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+
+		StudentSystem studentSystem = new StudentSystem();
+
+//		Student student = new Student();
+//		student.setRollNumber(6);
+//		student.setName("Eshwar");
+//		student.setDateOfBirth(Date.valueOf("1993-09-23"));
+//		student.setMobileNumber(34567);
+//
+//		studentSystem.insert(student);
+
+		Student student = studentSystem.getStudent(6);
+
+		if (student != null) {
+			System.out.println(student.toString());
+		} else {
+			System.out.println("Student not found");
+		}
+
+//		Student updateStudent = studentSystem.updateStudent(6, 999999);
+//
+//		if (student != null) {
+//			System.out.println(updateStudent.toString());
+//		} else {
+//			System.out.println("updateStudent not found");
+//		}
+
+		studentSystem.deleteStudent(6);
+
+		student = studentSystem.getStudent(6);
+
+		if (student != null) {
+			System.out.println(student.toString());
+		} else {
+			System.out.println("Student not found");
+		}
+	}
+}
