@@ -9,21 +9,27 @@ import java.sql.SQLException;
 
 public class StudentSystem {
 
+	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/student_ms";
+	private static final String USER_NAME = "root";
+	private static final String PASSWORD = "root";
+
+	private static final String INSERT_QUERY = "insert into student (roll_number, name, dob, mobile) values (?, ?, ?, ?)";
+
+	private static final String SELECT_QUERY = "select roll_number, name, dob, mobile from student where roll_number = ?";
+
+	private static final String UPDATE_QUERY = "update student set mobile = ? where roll_number = ?";
+
+	private static final String DELETE_QUERY = "delete from student where roll_number = ?";
+
 	public void insert(Student student) {
-
-		String query = "insert into student (roll_number, name, dob, mobile) values (?, ?, ?, ?)";
-
-		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
-		String userName = "root";
-		String password = "root";
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		try {
-			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+			connection = getConnection();
 
-			preparedStatement = connection.prepareStatement(query);
+			preparedStatement = connection.prepareStatement(INSERT_QUERY);
 
 			preparedStatement.setInt(1, student.getRollNumber());
 			preparedStatement.setString(2, student.getName());
@@ -40,39 +46,20 @@ public class StudentSystem {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if (preparedStatement != null) {
-				try {
-					preparedStatement.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			releaseResource(connection, preparedStatement);
 		}
 	}
 
 	public Student getStudent(int rollNumber) {
 		Student student = null;
 
-		String query = "select roll_number, name, dob, mobile from student where roll_number = ?";
-
-		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
-		String userName = "root";
-		String password = "root";
-
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		try {
-			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+			connection = getConnection();
 
-			preparedStatement = connection.prepareStatement(query);
+			preparedStatement = connection.prepareStatement(SELECT_QUERY);
 
 			preparedStatement.setInt(1, rollNumber);
 
@@ -95,6 +82,8 @@ public class StudentSystem {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			releaseResource(connection, preparedStatement);
 		}
 
 		return student;
@@ -103,19 +92,13 @@ public class StudentSystem {
 	public Student updateStudent(int rollNumber, int updatedMobile) {
 		Student student = null;
 
-		String query = "update student set mobile = ? where roll_number = ?";
-
-		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
-		String userName = "root";
-		String password = "root";
-
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		try {
-			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+			connection = getConnection();
 
-			preparedStatement = connection.prepareStatement(query);
+			preparedStatement = connection.prepareStatement(UPDATE_QUERY);
 
 			preparedStatement.setInt(1, updatedMobile);
 			preparedStatement.setInt(2, rollNumber);
@@ -132,6 +115,8 @@ public class StudentSystem {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			releaseResource(connection, preparedStatement);
 		}
 
 		return student;
@@ -139,19 +124,13 @@ public class StudentSystem {
 
 	public void deleteStudent(int rollNumber) {
 
-		String query = "delete from student where roll_number = ?";
-
-		String jdbcUrl = "jdbc:mysql://localhost:3306/student_ms";
-		String userName = "root";
-		String password = "root";
-
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		try {
-			connection = DriverManager.getConnection(jdbcUrl, userName, password);
+			connection = getConnection();
 
-			preparedStatement = connection.prepareStatement(query);
+			preparedStatement = connection.prepareStatement(DELETE_QUERY);
 
 			preparedStatement.setInt(1, rollNumber);
 
@@ -164,6 +143,31 @@ public class StudentSystem {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			releaseResource(connection, preparedStatement);
+		}
+	}
+
+	private Connection getConnection() throws SQLException {
+		Connection connection = DriverManager.getConnection(JDBC_URL, USER_NAME, PASSWORD);
+
+		return connection;
+	}
+
+	private void releaseResource(Connection connection, PreparedStatement preparedStatement) {
+		if (preparedStatement != null) {
+			try {
+				preparedStatement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (connection != null) {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -179,7 +183,7 @@ public class StudentSystem {
 //
 //		studentSystem.insert(student);
 
-		Student student = studentSystem.getStudent(6);
+		Student student = studentSystem.getStudent(5);
 
 		if (student != null) {
 			System.out.println(student.toString());
@@ -195,9 +199,9 @@ public class StudentSystem {
 //			System.out.println("updateStudent not found");
 //		}
 
-		studentSystem.deleteStudent(6);
+		//studentSystem.deleteStudent(6);
 
-		student = studentSystem.getStudent(6);
+		student = studentSystem.getStudent(3);
 
 		if (student != null) {
 			System.out.println(student.toString());

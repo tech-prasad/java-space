@@ -2905,6 +2905,10 @@ public class NestedForLoopExample {
 	}
 }
 
+Infinite loop:
+for(;;) {
+ // instructions		
+}
 
 f. while:
 ---------
@@ -4596,13 +4600,14 @@ By default all threads non-daemon threads. If we want to create Daemon threads w
 https://dev.mysql.com/downloads/windows/installer/8.0.html
 https://dbeaver.io/files/dbeaver-ce-latest-win32.win32.x86_64.zip
 
-JDBC:
+JDBC: (Java Data Base Connectivity)
 JDBC is an API which contains classes and interfaces to connect with Database.
 
 Driver setup: Download driver jar file and set in Build path of Project.
 
 JDBC Url: It is used Identify Database
 Ex: jdbc:mysql://localhost:3306/student_ms
+also called as thin driver.
 
 Username: Username of the database
 Password: Password of the database

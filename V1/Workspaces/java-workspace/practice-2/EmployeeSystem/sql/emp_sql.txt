@@ -1,0 +1,24 @@
+create table department (
+	department_id INT PRIMARY KEY,
+	department_name varchar(100)
+);
+
+insert into department (department_id, department_name) values (1, 'Finance');
+insert into department (department_id, department_name) values (?, ?);
+
+select * from department;
+
+create table employee (
+	employee_id INT,
+	employee_name varchar(100),
+	salary double,
+	age int,
+	hire_date date,
+	department_Id INT,
+	FOREIGN KEY (department_Id) REFERENCES department (department_Id)
+);
+
+insert into employee (employee_id, employee_name, salary, age, hire_date, department_Id) values (1, 'Anil', 56789.89, 34, '2020-04-23', 1);
+insert into employee (employee_id, employee_name, salary, age, hire_date, department_Id) values (?, ?, ?, ?, ?, ?)
+
+select * from employee;
