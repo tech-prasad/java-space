@@ -4892,3 +4892,8 @@ public class StudentSystem {
 		}
 	}
 }
+
+Application layers:
+Repository layer - database logic (insert/update/delete/select)
+Service layer - business logic (performing business logic)
+Controller layer - Presentation logic (entry and exit point)

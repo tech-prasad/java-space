@@ -3,6 +3,7 @@ package com.emp.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
@@ -15,6 +16,20 @@ public class ConnectionUtil {
 		Connection connection = DriverManager.getConnection(JDBC_URL, USER_NAME, PASSWORD);
 
 		return connection;
+	}
+
+	public static void releaseResource(Connection connection, PreparedStatement preparedStatement,
+			ResultSet resultSet) {
+
+		if (resultSet != null) {
+			try {
+				resultSet.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		releaseResource(connection, preparedStatement);
 	}
 
 	public static void releaseResource(Connection connection, PreparedStatement preparedStatement) {
