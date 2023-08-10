@@ -4897,3 +4897,37 @@ Application layers:
 Repository layer - database logic (insert/update/delete/select)
 Service layer - business logic (performing business logic)
 Controller layer - Presentation logic (entry and exit point)
+
+Java features:
+--------------
+Platform Independence
+Portability
+Object-Oriented Programming (OOP)
+Strongly Typed (Case Sensitive)
+Garbage Collection
+Rich Standard Library(Predefined classes and interfaces)
+Multi-threading and Concurrency
+Exception Handling
+
+Java project ideas:
+-------------------
+1. Simple Calculator:
+Build a basic calculator that can perform arithmetic operations like addition, subtraction, multiplication, and division. Extend it to handle more advanced functions like square root and exponentiation.
+
+2. Bank ATM Simulation:
+Simulate the behavior of an ATM machine, allowing users to check their balance, deposit funds, withdraw cash, etc.
+
+3. Contact Book:
+Create an application to manage contacts with functionalities like adding new contacts, searching for contacts, and displaying the contact list.
+
+4. College Management System:
+Develop a program to manage college data, including student information and library details.
+
+5. Employee Management System:
+Develop a program to manage employee data, including their information, salary details, and department.
+
+6. Inventory Management System:
+Create an inventory management system to keep track of product stock, sales, and purchases.
+
+7. Online Quiz Management: 
+

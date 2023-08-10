@@ -3,13 +3,20 @@ create table department (
 	department_name varchar(100)
 );
 
-insert into department (department_id, department_name) values (1, 'Finance');
+insert into department (department_id, department_name) values (3, 'TECH');
 insert into department (department_id, department_name) values (?, ?);
 
 select * from department;
 
+select department_id, department_name from department where department_Id = 1;
+
+select department_id, department_name from department where department_Id = ?;
+
+select department_id, department_name from department where department_name = 'Finance';
+select department_id, department_name from department where department_name = ?;
+
 create table employee (
-	employee_id INT,
+	employee_id INT primary key,
 	employee_name varchar(100),
 	salary double,
 	age int,
@@ -22,3 +29,52 @@ insert into employee (employee_id, employee_name, salary, age, hire_date, depart
 insert into employee (employee_id, employee_name, salary, age, hire_date, department_Id) values (?, ?, ?, ?, ?, ?)
 
 select * from employee;
+
+select max(employee_id) as maxid from employee;
+
+select employee_id, employee_name, salary, age, hire_date, department_id from employee where employee_id = 1;
+select employee_id, employee_name, salary, age, hire_date, department_id from employee where employee_id = ?;
+
+select employee_id, employee_name, salary, age, hire_date, department_id from employee;
+
+
+update employee set salary = 3456 where employee_id = 1;
+update employee set salary = ? where employee_id = ?;
+
+delete from employee where employee_id = 4;
+delete from employee where employee_id = ?;
+
+
+CREATE TABLE Colleges (
+    college_id INT PRIMARY KEY,
+    college_name VARCHAR(100),
+    location VARCHAR(100),
+    established_year INT,
+    website VARCHAR(100)
+);
+
+CREATE TABLE Library (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(200),
+    author VARCHAR(100),
+    publication_year INT,
+    isbn VARCHAR(20),
+    college_id INT,
+    FOREIGN KEY (college_id) REFERENCES Colleges(college_id)
+);
+
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    date_of_birth DATE,
+    gender VARCHAR(10),
+    email VARCHAR(100),
+    phone VARCHAR(20),
+    address VARCHAR(200),
+    admission_date DATE,
+    college_id INT,
+    FOREIGN KEY (college_id) REFERENCES Colleges(college_id)
+);
+
+

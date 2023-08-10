@@ -34,7 +34,12 @@ public class EmployeeService {
 		entity.setSalary(dto.getSalary());
 		entity.setAge(dto.getAge());
 		entity.setHireDate(dto.getHireDate());
-		entity.setDepartmentId(dto.getDepartmentId());
+
+		String departmentName = dto.getDepartmentName();
+
+		DepartmentEntity departmentEntity = departmentRepository.getDepartmentByName(departmentName);
+
+		entity.setDepartmentId(departmentEntity.getDepartmentId());
 
 		int rowsAffected = employeeRepository.insertEmployee(entity);
 
@@ -107,6 +112,35 @@ public class EmployeeService {
 		}
 
 		return responseDtos;
+	}
+
+	public String updateSalaryOfEmployee(int employeeId, double salary) {
+
+		String status = null;
+
+		int rowsAffected = employeeRepository.updateEmployee(employeeId, salary);
+
+		if (rowsAffected > 0) {
+			status = "update success";
+		} else {
+			status = "update failed";
+		}
+
+		return status;
+	}
+
+	public String deleteEmployeeById(int employeeId) {
+		String status = null;
+
+		int rowsAffected = employeeRepository.deleteEmployee(employeeId);
+
+		if (rowsAffected > 0) {
+			status = "Delete success";
+		} else {
+			status = "Delete failed";
+		}
+
+		return status;
 	}
 
 }

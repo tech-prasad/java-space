@@ -17,6 +17,8 @@ public class EmployeeRepository {
 	private static final String SELECT_QUERY = "select employee_id, employee_name, salary, age, hire_date, department_id from employee where employee_id = ?";
 	private static final String SELECT_ALL_QUERY = "select employee_id, employee_name, salary, age, hire_date, department_id from employee";
 	private static final String SELECT_MAX_KEY = "select max(employee_id) maxid from employee";
+	private static final String UPDATE_QUERY = "update employee set salary = ? where employee_id = ?";
+	private static final String DELETE_QUERY = "delete from employee where employee_id = ?";
 
 	public int insertEmployee(EmployeeEntity entity) {
 
@@ -154,6 +156,53 @@ public class EmployeeRepository {
 		}
 
 		return employees;
+	}
+
+	public int updateEmployee(int employeeId, double salary) {
+
+		int rowsAffcted = 0;
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = ConnectionUtil.getConnection();
+			preparedStatement = connection.prepareStatement(UPDATE_QUERY);
+
+			preparedStatement.setDouble(1, salary);
+
+			preparedStatement.setInt(2, employeeId);
+
+			rowsAffcted = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			ConnectionUtil.releaseResource(connection, preparedStatement);
+		}
+
+		return rowsAffcted;
+	}
+
+	public int deleteEmployee(int employeeId) {
+		int rowsAffcted = 0;
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = ConnectionUtil.getConnection();
+			preparedStatement = connection.prepareStatement(DELETE_QUERY);
+
+			preparedStatement.setInt(1, employeeId);
+
+			rowsAffcted = preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.releaseResource(connection, preparedStatement);
+		}
+
+		return rowsAffcted;
 	}
 
 }

@@ -8,7 +8,7 @@ public class CreateEmployeeDto {
 	private double salary;
 	private int age;
 	private Date hireDate;
-	private int departmentId;
+	private String departmentName;
 
 	public String getEmployeeName() {
 		return employeeName;
@@ -42,18 +42,18 @@ public class CreateEmployeeDto {
 		this.hireDate = hireDate;
 	}
 
-	public int getDepartmentId() {
-		return departmentId;
+	public String getDepartmentName() {
+		return departmentName;
 	}
 
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
 	}
 
 	@Override
 	public String toString() {
-		return "EmployeeCreateDto [employeeName=" + employeeName + ", salary=" + salary + ", age=" + age + ", hireDate="
-				+ hireDate + ", departmentId=" + departmentId + "]";
+		return "CreateEmployeeDto [employeeName=" + employeeName + ", salary=" + salary + ", age=" + age + ", hireDate="
+				+ hireDate + ", departmentName=" + departmentName + "]";
 	}
 
 }

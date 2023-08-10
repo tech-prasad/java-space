@@ -25,7 +25,12 @@ public class EmployeeSystem {
 		Scanner s = new Scanner(System.in);
 
 		for (;;) {
-
+			System.out.println();
+			System.out.println("1: Create employee");
+			System.out.println("2: Get employee by id");
+			System.out.println("3: Get all employees");
+			System.out.println("4: Update employee");
+			System.out.println("5: Delete employee");
 			System.out.println("Enter operation: ");
 			int operation = s.nextInt();
 
@@ -42,13 +47,15 @@ public class EmployeeSystem {
 				createEmployeeDto.setAge(s.nextInt());
 
 				System.out.println("Enter salary: ");
-				createEmployeeDto.setSalary(s.nextDouble());
+				double nextDouble2 = s.nextDouble();
+				double nextDouble = nextDouble2;
+				createEmployeeDto.setSalary(nextDouble);
 
 				System.out.println("Enter hire date (YYYY-MM-DD): ");
 				createEmployeeDto.setHireDate(Date.valueOf(s.next()));
 
-				System.out.println("Enter department id: ");
-				createEmployeeDto.setDepartmentId(s.nextInt());
+				System.out.println("Enter department name: ");
+				createEmployeeDto.setDepartmentName(s.next());
 
 				CreateEmployeeResponseDto createEmployeeResponseDto = employeeController
 						.createEmployee(createEmployeeDto);
@@ -71,6 +78,25 @@ public class EmployeeSystem {
 						System.out.println(responseDto);
 					}
 				}
+				break;
+			case 4:
+				System.out.println("Enter employee id: ");
+				int employeeId = s.nextInt();
+
+				System.out.println("Enter new salary: ");
+				double salary = s.nextDouble();
+
+				String status = employeeController.updateSalaryOfEmployee(employeeId, salary);
+
+				System.out.println(status);
+				break;
+			case 5:
+				System.out.println("Enter employee id: ");
+				int eId = s.nextInt();
+
+				String statusValue = employeeController.deleteEmployeeById(eId);
+
+				System.out.println(statusValue);
 				break;
 			case -1:
 				System.out.println("Exit");

@@ -52,4 +52,28 @@ public class EmployeeController {
 		return allEmployees;
 	}
 
+	public String updateSalaryOfEmployee(int employeeId, double salary) {
+		String status = null;
+
+		try {
+			status = employeeService.updateSalaryOfEmployee(employeeId, salary);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return status;
+	}
+
+	public String deleteEmployeeById(int employeeId) {
+		String status = null;
+
+		try {
+			status = employeeService.deleteEmployeeById(employeeId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return status;
+	}
+
 }
