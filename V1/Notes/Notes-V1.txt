@@ -4605,7 +4605,7 @@ JDBC is an API which contains classes and interfaces to connect with Database.
 
 Driver setup: Download driver jar file and set in Build path of Project.
 
-JDBC Url: It is used Identify Database
+JDBC Url: It is used to Identify Database
 Ex: jdbc:mysql://localhost:3306/student_ms
 also called as thin driver.
 

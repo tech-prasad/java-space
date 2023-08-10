@@ -1,6 +1,6 @@
 package com.array;
 
-public class Array2 {
+public class NumberArray {
 
 	public static void main(String[] args) {
 
